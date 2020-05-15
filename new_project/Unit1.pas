@@ -17,8 +17,6 @@ type
     Depart1: TMenuItem;
     Line1: TMenuItem;
     Action1: TAction;
-    Button1: TButton;
-    Button2: TButton;
     Button3: TButton;
     IBDatabase1: TIBDatabase;
     IBQuery1: TIBQuery;
@@ -29,14 +27,21 @@ type
     Edit1: TEdit;
     IBQuery2: TIBQuery;
     IBTransaction2: TIBTransaction;
+    RadioButton1: TRadioButton;
+    RadioButton2: TRadioButton;
+    Button1: TButton;
     procedure FormCreate(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
-    procedure Button1Click(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
+    procedure RadioButton1Click(Sender: TObject);
+    procedure RadioButton2Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure Depart1Click(Sender: TObject);
   private
     FNew: Boolean;
+    CheckFirstTable: string;
+
   public
     { Public declarations }
   end;
@@ -52,6 +57,7 @@ procedure TForm1.FormCreate(Sender: TObject);
   var
   FIniFile: TIniFile;
 begin
+  FNew := true;
   try
     FIniFile := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'Config.ini');
     try
@@ -62,7 +68,7 @@ begin
    IBDatabase1.Connected := true;
    with IBQuery1 do
    begin
-    SQL.Text := 'select *  from depart';
+    SQL.Text := 'select *  from '''+ CheckFirstTable +''';  //depart line_item
     Open;
    end;
   except
@@ -80,15 +86,6 @@ begin
   IBDatabase1.Connected := false;
 end;
 
-procedure TForm1.Button1Click(Sender: TObject);
-begin
-FNew := true;
-end;
-
-procedure TForm1.Button2Click(Sender: TObject);
-begin
-FNew := false;
-end;
 
 procedure TForm1.Button4Click(Sender: TObject);
 begin
@@ -138,6 +135,28 @@ begin
       Application.MessageBox(Pchar(E.Message), 'Error', MB_ICONERROR);
    end;
   end;
+end;
+
+procedure TForm1.RadioButton1Click(Sender: TObject);
+begin
+FNew := true;
+RadioButton2.Checked := false;
+end;
+
+procedure TForm1.RadioButton2Click(Sender: TObject);
+begin
+FNew := false;
+RadioButton1.Checked := false;
+end;
+
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+  Edit1.Text := DBGrid1.columns[1].Field.asString;
+end;
+
+procedure TForm1.Depart1Click(Sender: TObject);
+begin
+  CheckFirstTable = "depart";
 end;
 
 end.

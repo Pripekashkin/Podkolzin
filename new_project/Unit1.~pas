@@ -17,8 +17,6 @@ type
     Depart1: TMenuItem;
     Line1: TMenuItem;
     Action1: TAction;
-    Button1: TButton;
-    Button2: TButton;
     Button3: TButton;
     IBDatabase1: TIBDatabase;
     IBQuery1: TIBQuery;
@@ -29,12 +27,16 @@ type
     Edit1: TEdit;
     IBQuery2: TIBQuery;
     IBTransaction2: TIBTransaction;
+    RadioButton1: TRadioButton;
+    RadioButton2: TRadioButton;
+    Button1: TButton;
     procedure FormCreate(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
-    procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
+    procedure RadioButton1Click(Sender: TObject);
+    procedure RadioButton2Click(Sender: TObject);
   private
     FNew: Boolean;
   public
@@ -80,15 +82,6 @@ begin
   IBDatabase1.Connected := false;
 end;
 
-procedure TForm1.Button1Click(Sender: TObject);
-begin
-FNew := true;
-end;
-
-procedure TForm1.Button2Click(Sender: TObject);
-begin
-FNew := false;
-end;
 
 procedure TForm1.Button4Click(Sender: TObject);
 begin
@@ -138,6 +131,18 @@ begin
       Application.MessageBox(Pchar(E.Message), 'Error', MB_ICONERROR);
    end;
   end;
+end;
+
+procedure TForm1.RadioButton1Click(Sender: TObject);
+begin
+FNew := true;
+RadioButton2.Checked := false;
+end;
+
+procedure TForm1.RadioButton2Click(Sender: TObject);
+begin
+FNew := false;
+RadioButton1.Checked := false;
 end;
 
 end.
