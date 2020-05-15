@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = -939
-  Top = 235
-  Width = 603
+  Left = -1258
+  Top = 205
+  Width = 902
   Height = 608
   Caption = 'Form1'
   Color = clBtnFace
@@ -19,7 +19,7 @@ object Form1: TForm1
   object ToolBar1: TToolBar
     Left = 0
     Top = 0
-    Width = 587
+    Width = 886
     Height = 29
     Caption = 'ToolBar1'
     TabOrder = 0
@@ -96,13 +96,14 @@ object Form1: TForm1
     Left = 72
     Top = 456
     object Rf1: TMenuItem
-      Caption = 'Controls'
+      Caption = 'Edit main'
       object Depart1: TMenuItem
         Caption = 'Depart'
         OnClick = Depart1Click
       end
       object Line1: TMenuItem
         Caption = 'Line item'
+        OnClick = Line1Click
       end
     end
   end
