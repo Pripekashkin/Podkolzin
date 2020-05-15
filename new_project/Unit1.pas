@@ -17,8 +17,6 @@ type
     Depart1: TMenuItem;
     Line1: TMenuItem;
     Action1: TAction;
-    Button1: TButton;
-    Button2: TButton;
     Button3: TButton;
     IBDatabase1: TIBDatabase;
     IBQuery1: TIBQuery;
@@ -29,14 +27,23 @@ type
     Edit1: TEdit;
     IBQuery2: TIBQuery;
     IBTransaction2: TIBTransaction;
+    RadioButton1: TRadioButton;
+    RadioButton2: TRadioButton;
+    Button1: TButton;
     procedure FormCreate(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
-    procedure Button1Click(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
+    procedure RadioButton1Click(Sender: TObject);
+    procedure RadioButton2Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure Depart1Click(Sender: TObject);
+    procedure Line1Click(Sender: TObject);
   private
     FNew: Boolean;
+    CheckFirstTable: String;
+    ExecuteProcedure: String;
+
   public
     { Public declarations }
   end;
@@ -52,6 +59,9 @@ procedure TForm1.FormCreate(Sender: TObject);
   var
   FIniFile: TIniFile;
 begin
+  CheckFirstTable := 'depart';
+  ExecuteProcedure := 'proc_depart';
+  FNew := true;
   try
     FIniFile := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'Config.ini');
     try
@@ -62,7 +72,7 @@ begin
    IBDatabase1.Connected := true;
    with IBQuery1 do
    begin
-    SQL.Text := 'select *  from depart';
+    SQL.Text := 'select *  from '+ CheckFirstTable +'';  //depart line_item
     Open;
    end;
   except
@@ -80,15 +90,6 @@ begin
   IBDatabase1.Connected := false;
 end;
 
-procedure TForm1.Button1Click(Sender: TObject);
-begin
-FNew := true;
-end;
-
-procedure TForm1.Button2Click(Sender: TObject);
-begin
-FNew := false;
-end;
 
 procedure TForm1.Button4Click(Sender: TObject);
 begin
@@ -97,16 +98,16 @@ begin
    begin
     if FNew then
       SQL.Text :=
-      'execute procedure PROC_DEPART(-1, ''' +  Edit1.Text + ''')'
+      'execute procedure '+ ExecuteProcedure +'(-1, ''' +  Edit1.Text + ''')'
     else
-      SQL.Text := 'execute procedure PROC_DEPART(' +IBQuery1.FieldByName('ID').AsString + ', ''' +  Edit1.Text + ''')';
+      SQL.Text := 'execute procedure '+ ExecuteProcedure +'(' +IBQuery1.FieldByName('ID').AsString + ', ''' +  Edit1.Text + ''')';
     Transaction.StartTransaction;
     ExecSQL;
     Transaction.Commit;
     Transaction.Active := false;
     end;
-       IBQuery1.Close;
-      IBQuery1.Open;
+    IBQuery1.Close;
+    IBQuery1.Open;
   except
    on E: Exception do
   begin
@@ -122,13 +123,13 @@ begin
     try
    with IBQuery2 do
    begin
-      SQL.Text := 'delete from DEPART where id = ' +IBQuery1.FieldByName('ID').AsString;
+      SQL.Text := 'delete from '+ CheckFirstTable +' where id = ' +IBQuery1.FieldByName('ID').AsString;
     Transaction.StartTransaction;
     ExecSQL;
     Transaction.Commit;
     Transaction.Active := false;
     end;
-       IBQuery1.Close;
+      IBQuery1.Close;
       IBQuery1.Open;
   except
    on E: Exception do
@@ -138,6 +139,45 @@ begin
       Application.MessageBox(Pchar(E.Message), 'Error', MB_ICONERROR);
    end;
   end;
+end;
+
+procedure TForm1.RadioButton1Click(Sender: TObject);
+begin
+FNew := true;
+RadioButton2.Checked := false;
+end;
+
+procedure TForm1.RadioButton2Click(Sender: TObject);
+begin
+FNew := false;
+RadioButton1.Checked := false;
+end;
+
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+  Edit1.Text := DBGrid1.columns[1].Field.asString;
+end;
+
+procedure TForm1.Depart1Click(Sender: TObject);
+begin
+  CheckFirstTable := 'depart';
+  ExecuteProcedure := 'proc_depart';
+   with IBQuery1 do
+   begin
+    SQL.Text := 'select *  from '+ CheckFirstTable +'';  //depart line_item
+    Open;
+   end;
+end;
+
+procedure TForm1.Line1Click(Sender: TObject);
+begin
+  CheckFirstTable := 'line_item';
+  ExecuteProcedure := 'proc_line';
+   with IBQuery1 do
+   begin
+    SQL.Text := 'select *  from '+ CheckFirstTable +'';  //depart line_item
+    Open;
+   end;
 end;
 
 end.
