@@ -49,6 +49,7 @@ type
     Label6: TLabel;
     Button6: TButton;
     Label7: TLabel;
+    Button7: TButton;
     procedure FormCreate(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure Button4Click(Sender: TObject);
@@ -62,6 +63,7 @@ type
     procedure Button2Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button6Click(Sender: TObject);
+    procedure Button7Click(Sender: TObject);
   private
     FNew: Boolean;
     CheckFirstTable: String;
@@ -289,6 +291,62 @@ begin
       IBQuery3.Next;
     end;
    IBQuery3.Close;
+  end;
+  Label7.Caption := 'execute procedure proc_report(-1, ''' +  ComboBox3.Items[ComboBox3.ItemIndex] + ''', ''' + ComboBox4.Items[ComboBox4.ItemIndex] + ''', ' +IntToStr(DepartToId) + ', '+ IntToStr(LineToId) +', '''+ Edit2.Text +''', '''+Edit3.Text+''')'
+end;
+
+procedure TForm1.Button7Click(Sender: TObject);
+begin
+//insert id from table
+ with IBQuery3 do //find first field id
+  begin
+    SQL.Text := 'select id from line_item where '''+ComboBox1.Items[ComboBox1.ItemIndex]+''' = info';
+    Open;
+    IBQuery3.First;
+    while not IBQuery3.Eof do
+    begin
+     LineToId := IBQuery3['id'];  // here id of current line
+      IBQuery3.Next;
+    end;
+   IBQuery3.Close;
+  end;
+
+  with IBQuery3 do //find first field id
+  begin
+    SQL.Text := 'select id from depart where '''+ComboBox2.Items[ComboBox2.ItemIndex]+''' = name';
+    Open;
+    IBQuery3.First;
+    while not IBQuery3.Eof do
+    begin
+      DepartToId := IBQuery3['id'];  // here id of current depart
+      IBQuery3.Next;
+    end;
+   IBQuery3.Close;
+  end;
+//
+
+  try
+   with IBQuery2 do
+   begin
+    if FNew then
+      SQL.Text := 'execute procedure proc_report(-1, ''' +  ComboBox3.Items[ComboBox3.ItemIndex] + ''', ''' + ComboBox4.Items[ComboBox4.ItemIndex] + ''', ' +IntToStr(DepartToId) + ', '+ IntToStr(LineToId) +', '''+ Edit2.Text +''', '''+Edit3.Text+''')'
+    else
+      SQL.Text := 'execute procedure INSERT_TRANSACTION(' +IBQuery1.FieldByName('ID_TRANS').AsString + ', ''' +  ComboBox1.Items[ComboBox1.ItemIndex] + ''', ''' + Edit1.Text + ''',''' +  ComboBox2.Items[ComboBox2.ItemIndex] + ''', ' + Edit2.Text + ')';
+    Transaction.StartTransaction;
+    ExecSQL;
+    Transaction.Commit;
+    Transaction.Active := false;
+
+   end;
+   IBQuery1.Close;
+   IBQuery1.Open;
+  except
+   on E: Exception do
+  begin
+      if  IBQuery2.Active then
+        IBQuery2.Transaction.Rollback;
+      Application.MessageBox(Pchar(E.Message), 'error', MB_ICONERROR);
+   end;
   end;
 end;
 

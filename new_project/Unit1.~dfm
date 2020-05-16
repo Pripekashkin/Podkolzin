@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = -1165
-  Top = 238
-  Width = 1006
+  Left = -1530
+  Top = 270
+  Width = 1274
   Height = 744
   Caption = 'Form1'
   Color = clBtnFace
@@ -104,7 +104,7 @@ object Form1: TForm1
   object ToolBar1: TToolBar
     Left = 0
     Top = 0
-    Width = 990
+    Width = 1258
     Height = 29
     Caption = 'ToolBar1'
     TabOrder = 0
@@ -274,6 +274,15 @@ object Form1: TForm1
     Caption = #196#238#225#224#226#232#242#252' '#239#238#235#229
     TabOrder = 16
     OnClick = Button6Click
+  end
+  object Button7: TButton
+    Left = 912
+    Top = 184
+    Width = 75
+    Height = 25
+    Caption = 'Insert test'
+    TabOrder = 17
+    OnClick = Button7Click
   end
   object MainMenu1: TMainMenu
     Left = 104
