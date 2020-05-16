@@ -230,10 +230,14 @@ end;
 procedure TForm1.Button2Click(Sender: TObject);
 begin
     FNew := false;
-    ComboBox1.Text :=  DBGrid1.columns[1].Field.asString;
-    ComboBox2.Text :=  DBGrid1.columns[2].Field.asString;
-    ComboBox3.Text :=  DBGrid1.columns[3].Field.asString;
-    ComboBox4.Text :=  DBGrid1.columns[4].Field.asString;
+    //Combobox1.Items.Add(DBGrid1.columns[1].Field.asString);
+    //Combobox2.Items.Add(DBGrid1.columns[2].Field.asString);
+    //Combobox3.Items.Add(DBGrid1.columns[3].Field.asString);
+    //Combobox4.Items.Add(DBGrid1.columns[4].Field.asString);
+    //ComboBox1.Text :=  DBGrid1.columns[1].Field.asString;
+    //ComboBox2.Text :=  DBGrid1.columns[2].Field.asString;
+    //ComboBox3.Text :=  DBGrid1.columns[3].Field.asString;
+    //ComboBox4.Text :=  DBGrid1.columns[4].Field.asString;
     Edit2.Text := DBGrid1.columns[5].Field.asString;
     Edit3.Text := DBGrid1.columns[6].Field.asString;
     Label7.Caption := DBGrid1.columns[5].Field.asString;
@@ -351,6 +355,7 @@ begin
       Application.MessageBox(Pchar(E.Message), 'error', MB_ICONERROR);
    end;
   end;
+   Label7.Caption := 'SQL.Text := execute procedure proc_report(-1, ''' +  ComboBox3.Items[ComboBox3.ItemIndex] + ''', ''' + ComboBox4.Items[ComboBox4.ItemIndex] + ''', ' +IntToStr(DepartToId) + ', '+ IntToStr(LineToId) +', '''+ Edit2.Text +''', '''+Edit3.Text+''')'
 end;
 
 procedure TForm1.Button8Click(Sender: TObject);
