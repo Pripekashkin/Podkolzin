@@ -1,8 +1,8 @@
 object Form1: TForm1
-  Left = 567
-  Top = 250
-  Width = 902
-  Height = 608
+  Left = -1165
+  Top = 238
+  Width = 1006
+  Height = 744
   Caption = 'Form1'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -16,10 +16,95 @@ object Form1: TForm1
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
+  object Label1: TLabel
+    Left = 456
+    Top = 40
+    Width = 116
+    Height = 16
+    Caption = #209#242#224#242#252#241#255' '#240#224#241#245#238#228#238#226
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 472
+    Top = 64
+    Width = 88
+    Height = 16
+    Caption = #196#229#239#224#240#242#224#236#229#237#242
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 504
+    Top = 88
+    Width = 23
+    Height = 16
+    Caption = #195#238#228
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 496
+    Top = 112
+    Width = 41
+    Height = 16
+    Caption = #204#229#241#255#246
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label5: TLabel
+    Left = 472
+    Top = 136
+    Width = 85
+    Height = 16
+    Caption = #200#237#244#238#240#236#224#246#232#255
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label6: TLabel
+    Left = 496
+    Top = 160
+    Width = 43
+    Height = 16
+    Caption = #209#243#236#236#224
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label7: TLabel
+    Left = 776
+    Top = 176
+    Width = 17
+    Height = 13
+    Caption = 'test'
+  end
   object ToolBar1: TToolBar
     Left = 0
     Top = 0
-    Width = 886
+    Width = 990
     Height = 29
     Caption = 'ToolBar1'
     TabOrder = 0
@@ -36,8 +121,8 @@ object Form1: TForm1
   object DBGrid1: TDBGrid
     Left = 32
     Top = 240
-    Width = 505
-    Height = 120
+    Width = 945
+    Height = 217
     DataSource = DataSource1
     TabOrder = 2
     TitleFont.Charset = DEFAULT_CHARSET
@@ -92,9 +177,107 @@ object Form1: TForm1
     TabOrder = 7
     OnClick = Button1Click
   end
+  object ComboBox1: TComboBox
+    Left = 576
+    Top = 40
+    Width = 145
+    Height = 21
+    ItemHeight = 13
+    TabOrder = 8
+    Text = 'ComboBox1'
+  end
+  object ComboBox2: TComboBox
+    Left = 576
+    Top = 64
+    Width = 145
+    Height = 21
+    ItemHeight = 13
+    TabOrder = 9
+    Text = 'ComboBox2'
+  end
+  object ComboBox3: TComboBox
+    Left = 576
+    Top = 88
+    Width = 145
+    Height = 21
+    ItemHeight = 13
+    TabOrder = 10
+    Text = 'ComboBox3'
+    Items.Strings = (
+      '2019'
+      '2020'
+      '2021'
+      '2022'
+      '2023')
+  end
+  object ComboBox4: TComboBox
+    Left = 576
+    Top = 112
+    Width = 145
+    Height = 21
+    ItemHeight = 13
+    TabOrder = 11
+    Text = 'ComboBox4'
+    Items.Strings = (
+      '1'
+      '2'
+      '3'
+      '4'
+      '5'
+      '6'
+      '7'
+      '8'
+      '9'
+      '10'
+      '11'
+      '12')
+  end
+  object Edit2: TEdit
+    Left = 576
+    Top = 136
+    Width = 145
+    Height = 21
+    TabOrder = 12
+    Text = 'Edit2'
+  end
+  object Edit3: TEdit
+    Left = 576
+    Top = 160
+    Width = 145
+    Height = 21
+    TabOrder = 13
+    Text = 'Edit3'
+  end
+  object Button2: TButton
+    Left = 784
+    Top = 80
+    Width = 113
+    Height = 25
+    Caption = #196#224#237#237#251#229' '#232#231' '#242#224#225#235#232#246#251
+    TabOrder = 14
+    OnClick = Button2Click
+  end
+  object Button5: TButton
+    Left = 784
+    Top = 48
+    Width = 113
+    Height = 25
+    Caption = #206#225#237#238#226#232#242#252' '#241#239#232#241#234#232
+    TabOrder = 15
+    OnClick = Button5Click
+  end
+  object Button6: TButton
+    Left = 568
+    Top = 192
+    Width = 121
+    Height = 25
+    Caption = #196#238#225#224#226#232#242#252' '#239#238#235#229
+    TabOrder = 16
+    OnClick = Button6Click
+  end
   object MainMenu1: TMainMenu
-    Left = 72
-    Top = 456
+    Left = 104
+    Top = 528
     object Rf1: TMenuItem
       Caption = 'Edit main'
       object Depart1: TMenuItem
@@ -108,18 +291,19 @@ object Form1: TForm1
     end
     object Addreprot1: TMenuItem
       Caption = 'Add reprot'
+      OnClick = Addreprot1Click
     end
   end
   object ActionList1: TActionList
-    Left = 136
-    Top = 456
+    Left = 168
+    Top = 528
     object Action1: TAction
       Caption = 'Action1'
     end
   end
   object ImageList1: TImageList
-    Left = 216
-    Top = 464
+    Left = 248
+    Top = 536
   end
   object IBDatabase1: TIBDatabase
     Params.Strings = (
@@ -129,16 +313,16 @@ object Form1: TForm1
     IdleTimer = 0
     SQLDialect = 3
     TraceFlags = []
-    Left = 512
-    Top = 416
+    Left = 544
+    Top = 488
   end
   object IBQuery1: TIBQuery
     Database = IBDatabase1
     Transaction = IBTransaction1
     BufferChunks = 1000
     CachedUpdates = False
-    Left = 568
-    Top = 416
+    Left = 600
+    Top = 488
   end
   object IBTransaction1: TIBTransaction
     Active = False
@@ -148,21 +332,21 @@ object Form1: TForm1
       'rec_version'
       'nowait')
     AutoStopAction = saNone
-    Left = 624
-    Top = 416
+    Left = 656
+    Top = 488
   end
   object DataSource1: TDataSource
     DataSet = IBQuery1
-    Left = 704
-    Top = 408
+    Left = 736
+    Top = 480
   end
   object IBQuery2: TIBQuery
     Database = IBDatabase1
     Transaction = IBTransaction2
     BufferChunks = 1000
     CachedUpdates = False
-    Left = 568
-    Top = 456
+    Left = 600
+    Top = 528
   end
   object IBTransaction2: TIBTransaction
     Active = False
@@ -172,7 +356,26 @@ object Form1: TForm1
       'rec_version'
       'nowait')
     AutoStopAction = saNone
-    Left = 624
-    Top = 456
+    Left = 656
+    Top = 528
+  end
+  object IBQuery3: TIBQuery
+    Database = IBDatabase1
+    Transaction = IBTransaction3
+    BufferChunks = 1000
+    CachedUpdates = False
+    Left = 600
+    Top = 568
+  end
+  object IBTransaction3: TIBTransaction
+    Active = False
+    DefaultDatabase = IBDatabase1
+    Params.Strings = (
+      'read_committed'
+      'rec_version'
+      'nowait')
+    AutoStopAction = saNone
+    Left = 656
+    Top = 568
   end
 end

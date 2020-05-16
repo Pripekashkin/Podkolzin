@@ -31,6 +31,24 @@ type
     RadioButton2: TRadioButton;
     Button1: TButton;
     Addreprot1: TMenuItem;
+    ComboBox1: TComboBox;
+    ComboBox2: TComboBox;
+    ComboBox3: TComboBox;
+    ComboBox4: TComboBox;
+    Edit2: TEdit;
+    Edit3: TEdit;
+    Button2: TButton;
+    Button5: TButton;
+    IBQuery3: TIBQuery;
+    IBTransaction3: TIBTransaction;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Button6: TButton;
+    Label7: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure Button4Click(Sender: TObject);
@@ -40,11 +58,18 @@ type
     procedure Button1Click(Sender: TObject);
     procedure Depart1Click(Sender: TObject);
     procedure Line1Click(Sender: TObject);
+    procedure Addreprot1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Button5Click(Sender: TObject);
+    procedure Button6Click(Sender: TObject);
   private
     FNew: Boolean;
     CheckFirstTable: String;
     ExecuteProcedure: String;
-    SelDep, SelLin : string
+    Select: string;
+    CheckRefresh: boolean;
+    LineToId: Integer;
+    DepartToId: Integer;
 
   public
     { Public declarations }
@@ -63,6 +88,7 @@ procedure TForm1.FormCreate(Sender: TObject);
 begin
   CheckFirstTable := 'depart';
   ExecuteProcedure := 'proc_depart';
+  Select := 'name';
   FNew := true;
   try
     FIniFile := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'Config.ini');
@@ -74,7 +100,7 @@ begin
    IBDatabase1.Connected := true;
    with IBQuery1 do
    begin
-    SQL.Text := 'select *  from '+ CheckFirstTable +'';  //depart line_item
+    SQL.Text := 'select '+ Select +' from '+ CheckFirstTable +'';  //depart line_item
     Open;
    end;
   except
@@ -164,9 +190,10 @@ procedure TForm1.Depart1Click(Sender: TObject);
 begin
   CheckFirstTable := 'depart';
   ExecuteProcedure := 'proc_depart';
+  Select := 'name';
    with IBQuery1 do
    begin
-    SQL.Text := 'select *  from '+ CheckFirstTable +'';  //depart line_item
+    SQL.Text := 'select '+ Select +' from '+ CheckFirstTable +'';
     Open;
    end;
 end;
@@ -175,11 +202,97 @@ procedure TForm1.Line1Click(Sender: TObject);
 begin
   CheckFirstTable := 'line_item';
   ExecuteProcedure := 'proc_line';
+  Select := 'info';
    with IBQuery1 do
    begin
-    SQL.Text := 'select *  from '+ CheckFirstTable +'';  //depart line_item
+    SQL.Text := 'select '+ Select +' from '+ CheckFirstTable +'';
     Open;
    end;
+end;
+
+procedure TForm1.Addreprot1Click(Sender: TObject);
+begin
+  with IBQuery1 do
+   begin
+    SQL.Text := 'select line_item.info, depart.name, report.rmonth, report.ryear, report_content.info, report_content.report_sum ' +
+ 'from report_content, report, line_item, depart ' +
+'where (report.id = report_content.report_id) and ' +
+      '(line_item.id = report_content.line_item_id) and ' +
+      '(report.depart_id = depart.id)';
+    Open;
+   end;
+end;
+
+procedure TForm1.Button2Click(Sender: TObject);
+begin
+    FNew := false;
+    ComboBox1.Text :=  DBGrid1.columns[0].Field.asString;
+    ComboBox2.Text :=  DBGrid1.columns[1].Field.asString;
+    ComboBox3.Text :=  DBGrid1.columns[2].Field.asString;
+    ComboBox4.Text :=  DBGrid1.columns[3].Field.asString;
+    Edit2.Text := DBGrid1.columns[4].Field.asString;
+    Edit3.Text := DBGrid1.columns[5].Field.asString;
+end;
+
+procedure TForm1.Button5Click(Sender: TObject);
+begin
+
+  with IBQuery3 do
+  begin
+    SQL.Text := 'select info from line_item where id > 0';
+    Open;
+    IBQuery3.First;
+    while not IBQuery3.Eof do
+    begin
+      Combobox1.Items.Add(IBQuery3['info']);
+      IBQuery3.Next;
+    end;
+  end;
+
+with IBQuery3 do
+  begin
+    SQL.Text := 'select name from depart where id > 0';
+    Open;
+    IBQuery3.First;
+    while not IBQuery3.Eof do
+    begin
+      Combobox2.Items.Add(IBQuery3['name']);
+      IBQuery3.Next;
+    end;
+   IBQuery3.Close;
+  end;
+end;
+
+procedure TForm1.Button6Click(Sender: TObject);
+begin
+  with IBQuery3 do //find first field id
+  begin
+    SQL.Text := 'select id from line_item where '''+ComboBox1.Items[ComboBox1.ItemIndex]+''' = info';
+    Open;
+    IBQuery3.First;
+    while not IBQuery3.Eof do
+    begin
+     LineToId := IBQuery3['id'];  // here id of current line
+      IBQuery3.Next;
+    end;
+   IBQuery3.Close;
+  end;
+
+  with IBQuery3 do //find first field id
+  begin
+    SQL.Text := 'select id from depart where '''+ComboBox2.Items[ComboBox2.ItemIndex]+''' = name';
+    Open;
+    IBQuery3.First;
+    while not IBQuery3.Eof do
+    begin
+      DepartToId := IBQuery3['id'];  // here id of current depart
+      IBQuery3.Next;
+    end;
+   IBQuery3.Close;
+  end;
+  Edit2.Text := IntToStr(LineToId);
+  Edit3.Text := IntToStr(LineToId);
+
 end;
 
 end.
