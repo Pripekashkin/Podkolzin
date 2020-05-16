@@ -290,9 +290,6 @@ begin
     end;
    IBQuery3.Close;
   end;
-  Edit2.Text := IntToStr(LineToId);
-  Edit3.Text := IntToStr(LineToId);
-
 end;
 
 end.
