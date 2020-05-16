@@ -236,6 +236,7 @@ begin
     ComboBox4.Text :=  DBGrid1.columns[4].Field.asString;
     Edit2.Text := DBGrid1.columns[5].Field.asString;
     Edit3.Text := DBGrid1.columns[6].Field.asString;
+    Label7.Caption := DBGrid1.columns[5].Field.asString;
 end;
 
 procedure TForm1.Button5Click(Sender: TObject);
@@ -333,7 +334,6 @@ begin
     if FNew then
       SQL.Text := 'execute procedure proc_report(-1, ''' +  ComboBox3.Items[ComboBox3.ItemIndex] + ''', ''' + ComboBox4.Items[ComboBox4.ItemIndex] + ''', ' +IntToStr(DepartToId) + ', '+ IntToStr(LineToId) +', '''+ Edit2.Text +''', '''+Edit3.Text+''')'
     else
-     // SQL.Text := 'execute procedure INSERT_TRANSACTION(' +IBQuery1.FieldByName('ID_TRANS').AsString + ', ''' +  ComboBox1.Items[ComboBox1.ItemIndex] + ''', ''' + Edit1.Text + ''',''' +  ComboBox2.Items[ComboBox2.ItemIndex] + ''', ' + Edit2.Text + ')';
       SQL.Text := 'execute procedure proc_report(' +IBQuery1.FieldByName('ID').AsString + ', ''' +  ComboBox3.Items[ComboBox3.ItemIndex] + ''', ''' + ComboBox4.Items[ComboBox4.ItemIndex] + ''', ' +IntToStr(DepartToId) + ', '+ IntToStr(LineToId) +', '''+ Edit2.Text +''', '''+Edit3.Text+''')';
     Transaction.StartTransaction;
     ExecSQL;
