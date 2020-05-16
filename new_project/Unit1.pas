@@ -30,6 +30,7 @@ type
     RadioButton1: TRadioButton;
     RadioButton2: TRadioButton;
     Button1: TButton;
+    Addreprot1: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure Button4Click(Sender: TObject);
@@ -43,6 +44,7 @@ type
     FNew: Boolean;
     CheckFirstTable: String;
     ExecuteProcedure: String;
+    SelDep, SelLin : string;
 
   public
     { Public declarations }

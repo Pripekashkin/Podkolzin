@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = -1258
-  Top = 205
+  Left = 567
+  Top = 250
   Width = 902
   Height = 608
   Caption = 'Form1'
@@ -105,6 +105,9 @@ object Form1: TForm1
         Caption = 'Line item'
         OnClick = Line1Click
       end
+    end
+    object Addreprot1: TMenuItem
+      Caption = 'Add reprot'
     end
   end
   object ActionList1: TActionList
