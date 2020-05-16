@@ -66,6 +66,8 @@ type
 //    procedure Button6Click(Sender: TObject);
     procedure Button7Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
+    procedure ReportVisible(Sender: TObject; var Flag: boolean);
+    
   private
     FNew: Boolean;
     CheckFirstTable: String;
@@ -90,6 +92,7 @@ procedure TForm1.FormCreate(Sender: TObject);
   var
   FIniFile: TIniFile;
 begin
+Label1.Visible := false;
   CheckFirstTable := 'depart';
   ExecuteProcedure := 'proc_depart';
   Select := 'name';
@@ -240,7 +243,7 @@ begin
     //ComboBox4.Text :=  DBGrid1.columns[4].Field.asString;
     Edit2.Text := DBGrid1.columns[5].Field.asString;
     Edit3.Text := DBGrid1.columns[6].Field.asString;
-    Label7.Caption := DBGrid1.columns[5].Field.asString;
+    
 end;
 
 procedure TForm1.Button5Click(Sender: TObject);
@@ -355,7 +358,7 @@ begin
       Application.MessageBox(Pchar(E.Message), 'error', MB_ICONERROR);
    end;
   end;
-   Label7.Caption := 'SQL.Text := execute procedure proc_report(-1, ''' +  ComboBox3.Items[ComboBox3.ItemIndex] + ''', ''' + ComboBox4.Items[ComboBox4.ItemIndex] + ''', ' +IntToStr(DepartToId) + ', '+ IntToStr(LineToId) +', '''+ Edit2.Text +''', '''+Edit3.Text+''')'
+   //Label7.Caption := 'SQL.Text := execute procedure proc_report(-1, ''' +  ComboBox3.Items[ComboBox3.ItemIndex] + ''', ''' + ComboBox4.Items[ComboBox4.ItemIndex] + ''', ' +IntToStr(DepartToId) + ', '+ IntToStr(LineToId) +', '''+ Edit2.Text +''', '''+Edit3.Text+''')'
 end;
 
 procedure TForm1.Button8Click(Sender: TObject);
@@ -390,4 +393,8 @@ begin
   end;
 end;
 
+procedure TForm1.ReportVisible (Sender: TObject; var Flag: boolean);
+begin
+Label1.Visible := Flag;
+end;
 end.
