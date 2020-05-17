@@ -17,7 +17,7 @@ object Form1: TForm1
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
-    Left = 456
+    Left = 400
     Top = 40
     Width = 116
     Height = 16
@@ -31,7 +31,7 @@ object Form1: TForm1
     Visible = False
   end
   object Label2: TLabel
-    Left = 472
+    Left = 416
     Top = 64
     Width = 88
     Height = 16
@@ -45,7 +45,7 @@ object Form1: TForm1
     Visible = False
   end
   object Label3: TLabel
-    Left = 504
+    Left = 448
     Top = 88
     Width = 23
     Height = 16
@@ -59,7 +59,7 @@ object Form1: TForm1
     Visible = False
   end
   object Label4: TLabel
-    Left = 496
+    Left = 440
     Top = 112
     Width = 41
     Height = 16
@@ -73,7 +73,7 @@ object Form1: TForm1
     Visible = False
   end
   object Label5: TLabel
-    Left = 472
+    Left = 416
     Top = 136
     Width = 85
     Height = 16
@@ -87,7 +87,7 @@ object Form1: TForm1
     Visible = False
   end
   object Label6: TLabel
-    Left = 496
+    Left = 440
     Top = 160
     Width = 43
     Height = 16
@@ -138,8 +138,8 @@ object Form1: TForm1
     TitleFont.Style = []
   end
   object Button4: TButton
-    Left = 160
-    Top = 96
+    Left = 136
+    Top = 104
     Width = 121
     Height = 25
     Caption = #209#238#245#240#224#237#232#242#252
@@ -147,8 +147,8 @@ object Form1: TForm1
     OnClick = Button4Click
   end
   object Edit1: TEdit
-    Left = 160
-    Top = 56
+    Left = 136
+    Top = 48
     Width = 121
     Height = 21
     TabOrder = 4
@@ -175,8 +175,8 @@ object Form1: TForm1
     OnClick = RadioButton2Click
   end
   object Button1: TButton
-    Left = 296
-    Top = 56
+    Left = 264
+    Top = 48
     Width = 75
     Height = 25
     Caption = #200#231#236#229#237#232#242#252
@@ -184,7 +184,7 @@ object Form1: TForm1
     OnClick = Button1Click
   end
   object ComboBox1: TComboBox
-    Left = 576
+    Left = 520
     Top = 40
     Width = 145
     Height = 21
@@ -194,7 +194,7 @@ object Form1: TForm1
     Visible = False
   end
   object ComboBox2: TComboBox
-    Left = 576
+    Left = 528
     Top = 64
     Width = 145
     Height = 21
@@ -204,7 +204,7 @@ object Form1: TForm1
     Visible = False
   end
   object ComboBox3: TComboBox
-    Left = 576
+    Left = 528
     Top = 88
     Width = 145
     Height = 21
@@ -220,7 +220,7 @@ object Form1: TForm1
       '2023')
   end
   object ComboBox4: TComboBox
-    Left = 576
+    Left = 528
     Top = 112
     Width = 145
     Height = 21
@@ -243,7 +243,7 @@ object Form1: TForm1
       '12')
   end
   object Edit2: TEdit
-    Left = 576
+    Left = 528
     Top = 136
     Width = 145
     Height = 21
@@ -252,7 +252,7 @@ object Form1: TForm1
     Visible = False
   end
   object Edit3: TEdit
-    Left = 576
+    Left = 528
     Top = 160
     Width = 145
     Height = 21
@@ -261,7 +261,7 @@ object Form1: TForm1
     Visible = False
   end
   object Button2: TButton
-    Left = 744
+    Left = 696
     Top = 56
     Width = 113
     Height = 25
@@ -271,7 +271,7 @@ object Form1: TForm1
     OnClick = Button2Click
   end
   object Button5: TButton
-    Left = 744
+    Left = 696
     Top = 24
     Width = 113
     Height = 25
@@ -281,7 +281,7 @@ object Form1: TForm1
     OnClick = Button5Click
   end
   object Button7: TButton
-    Left = 576
+    Left = 528
     Top = 192
     Width = 145
     Height = 25
@@ -291,7 +291,7 @@ object Form1: TForm1
     OnClick = Button7Click
   end
   object Button8: TButton
-    Left = 760
+    Left = 704
     Top = 192
     Width = 75
     Height = 25
