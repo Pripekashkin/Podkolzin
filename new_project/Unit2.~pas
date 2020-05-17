@@ -365,7 +365,14 @@ begin
 
   with IBQuery1 do
    begin
-     SQL.Text := 'select SUM(Report_sum) from report_content where (LINE_ITEM_ID ='+IntToStr(LineToId)+')';
+    // SQL.Text := 'select SUM(Report_sum) from report_content where (LINE_ITEM_ID ='+IntToStr(LineToId)+')';
+     SQL.Text := 'select SUM(report_content.Report_sum) from report_content, report where ' +
+'(LINE_ITEM_ID = '+IntToStr(LineToId)+') and ' +
+'(report_content.report_id = report.id) and ' +
+'(ryear >= '''+ComboBox6.Items[ComboBox6.ItemIndex]+''') and ' +
+'(ryear <= '''+ComboBox8.Items[ComboBox8.ItemIndex]+''') and ' +
+'(rmonth >= '''+ComboBox5.Items[ComboBox5.ItemIndex]+''') and ' +
+'(rmonth <= '''+ComboBox7.Items[ComboBox7.ItemIndex]+''')';
     Open;
    end;
 end;
