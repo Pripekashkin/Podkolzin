@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 205
-  Top = 142
+  Left = 311
+  Top = 158
   Width = 1274
   Height = 687
   Caption = 'Form1'
@@ -28,6 +28,7 @@ object Form1: TForm1
     Font.Name = 'MS Sans Serif'
     Font.Style = []
     ParentFont = False
+    Visible = False
   end
   object Label2: TLabel
     Left = 472
@@ -41,6 +42,7 @@ object Form1: TForm1
     Font.Name = 'MS Sans Serif'
     Font.Style = []
     ParentFont = False
+    Visible = False
   end
   object Label3: TLabel
     Left = 504
@@ -54,6 +56,7 @@ object Form1: TForm1
     Font.Name = 'MS Sans Serif'
     Font.Style = []
     ParentFont = False
+    Visible = False
   end
   object Label4: TLabel
     Left = 496
@@ -67,6 +70,7 @@ object Form1: TForm1
     Font.Name = 'MS Sans Serif'
     Font.Style = []
     ParentFont = False
+    Visible = False
   end
   object Label5: TLabel
     Left = 472
@@ -80,6 +84,7 @@ object Form1: TForm1
     Font.Name = 'MS Sans Serif'
     Font.Style = []
     ParentFont = False
+    Visible = False
   end
   object Label6: TLabel
     Left = 496
@@ -93,10 +98,11 @@ object Form1: TForm1
     Font.Name = 'MS Sans Serif'
     Font.Style = []
     ParentFont = False
+    Visible = False
   end
   object Label7: TLabel
-    Left = 776
-    Top = 176
+    Left = 1008
+    Top = 336
     Width = 17
     Height = 13
     Caption = 'test'
@@ -132,16 +138,16 @@ object Form1: TForm1
     TitleFont.Style = []
   end
   object Button4: TButton
-    Left = 240
-    Top = 176
-    Width = 75
+    Left = 160
+    Top = 96
+    Width = 121
     Height = 25
     Caption = #209#238#245#240#224#237#232#242#252
     TabOrder = 3
     OnClick = Button4Click
   end
   object Edit1: TEdit
-    Left = 176
+    Left = 160
     Top = 56
     Width = 121
     Height = 21
@@ -169,11 +175,11 @@ object Form1: TForm1
     OnClick = RadioButton2Click
   end
   object Button1: TButton
-    Left = 336
+    Left = 296
     Top = 56
     Width = 75
     Height = 25
-    Caption = #206#225#237#238#226#232#242#252
+    Caption = #200#231#236#229#237#232#242#252
     TabOrder = 7
     OnClick = Button1Click
   end
@@ -185,6 +191,7 @@ object Form1: TForm1
     ItemHeight = 13
     TabOrder = 8
     Text = 'ComboBox1'
+    Visible = False
   end
   object ComboBox2: TComboBox
     Left = 576
@@ -194,6 +201,7 @@ object Form1: TForm1
     ItemHeight = 13
     TabOrder = 9
     Text = 'ComboBox2'
+    Visible = False
   end
   object ComboBox3: TComboBox
     Left = 576
@@ -203,6 +211,7 @@ object Form1: TForm1
     ItemHeight = 13
     TabOrder = 10
     Text = 'ComboBox3'
+    Visible = False
     Items.Strings = (
       '2019'
       '2020'
@@ -218,6 +227,7 @@ object Form1: TForm1
     ItemHeight = 13
     TabOrder = 11
     Text = 'ComboBox4'
+    Visible = False
     Items.Strings = (
       '1'
       '2'
@@ -239,6 +249,7 @@ object Form1: TForm1
     Height = 21
     TabOrder = 12
     Text = 'Edit2'
+    Visible = False
   end
   object Edit3: TEdit
     Left = 576
@@ -247,49 +258,46 @@ object Form1: TForm1
     Height = 21
     TabOrder = 13
     Text = 'Edit3'
+    Visible = False
   end
   object Button2: TButton
-    Left = 784
-    Top = 80
+    Left = 744
+    Top = 56
     Width = 113
     Height = 25
     Caption = #196#224#237#237#251#229' '#232#231' '#242#224#225#235#232#246#251
     TabOrder = 14
+    Visible = False
     OnClick = Button2Click
   end
   object Button5: TButton
-    Left = 784
-    Top = 48
+    Left = 744
+    Top = 24
     Width = 113
     Height = 25
     Caption = #206#225#237#238#226#232#242#252' '#241#239#232#241#234#232
     TabOrder = 15
+    Visible = False
     OnClick = Button5Click
   end
-  object Button6: TButton
-    Left = 568
-    Top = 192
-    Width = 121
-    Height = 25
-    Caption = #196#238#225#224#226#232#242#252' '#239#238#235#229
-    TabOrder = 16
-  end
   object Button7: TButton
-    Left = 920
-    Top = 152
-    Width = 75
+    Left = 576
+    Top = 192
+    Width = 145
     Height = 25
-    Caption = 'Insert test'
-    TabOrder = 17
+    Caption = #209#238#245#240#224#237#232#242#252
+    TabOrder = 16
+    Visible = False
     OnClick = Button7Click
   end
   object Button8: TButton
-    Left = 808
-    Top = 200
+    Left = 760
+    Top = 192
     Width = 75
     Height = 25
     Caption = #211#228#224#235#232#242#252
-    TabOrder = 18
+    TabOrder = 17
+    Visible = False
     OnClick = Button8Click
   end
   object MainMenu1: TMainMenu
