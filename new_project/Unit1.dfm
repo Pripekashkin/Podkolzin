@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 311
-  Top = 158
-  Width = 1274
+  Left = 112
+  Top = 350
+  Width = 996
   Height = 687
   Caption = 'Form1'
   Color = clBtnFace
@@ -17,7 +17,7 @@ object Form1: TForm1
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
-    Left = 400
+    Left = 360
     Top = 40
     Width = 116
     Height = 16
@@ -31,7 +31,7 @@ object Form1: TForm1
     Visible = False
   end
   object Label2: TLabel
-    Left = 416
+    Left = 376
     Top = 64
     Width = 88
     Height = 16
@@ -45,7 +45,7 @@ object Form1: TForm1
     Visible = False
   end
   object Label3: TLabel
-    Left = 448
+    Left = 408
     Top = 88
     Width = 23
     Height = 16
@@ -59,7 +59,7 @@ object Form1: TForm1
     Visible = False
   end
   object Label4: TLabel
-    Left = 440
+    Left = 400
     Top = 112
     Width = 41
     Height = 16
@@ -73,7 +73,7 @@ object Form1: TForm1
     Visible = False
   end
   object Label5: TLabel
-    Left = 416
+    Left = 376
     Top = 136
     Width = 85
     Height = 16
@@ -87,7 +87,7 @@ object Form1: TForm1
     Visible = False
   end
   object Label6: TLabel
-    Left = 440
+    Left = 400
     Top = 160
     Width = 43
     Height = 16
@@ -107,23 +107,6 @@ object Form1: TForm1
     Height = 13
     Caption = 'test'
   end
-  object ToolBar1: TToolBar
-    Left = 0
-    Top = 0
-    Width = 1258
-    Height = 29
-    Caption = 'ToolBar1'
-    TabOrder = 0
-  end
-  object Button3: TButton
-    Left = 24
-    Top = 104
-    Width = 75
-    Height = 25
-    Caption = #211#228#224#235#232#242#252
-    TabOrder = 1
-    OnClick = Button3Click
-  end
   object DBGrid1: TDBGrid
     Left = 32
     Top = 240
@@ -136,6 +119,140 @@ object Form1: TForm1
     TitleFont.Height = -11
     TitleFont.Name = 'MS Sans Serif'
     TitleFont.Style = []
+  end
+  object ComboBox1: TComboBox
+    Left = 488
+    Top = 40
+    Width = 145
+    Height = 21
+    ItemHeight = 13
+    TabOrder = 8
+    Text = 'ComboBox1'
+    Visible = False
+  end
+  object ComboBox2: TComboBox
+    Left = 488
+    Top = 64
+    Width = 145
+    Height = 21
+    ItemHeight = 13
+    TabOrder = 9
+    Text = 'ComboBox2'
+    Visible = False
+  end
+  object ComboBox3: TComboBox
+    Left = 488
+    Top = 88
+    Width = 145
+    Height = 21
+    ItemHeight = 13
+    TabOrder = 10
+    Text = 'ComboBox3'
+    Visible = False
+    Items.Strings = (
+      '2019'
+      '2020'
+      '2021'
+      '2022'
+      '2023')
+  end
+  object ComboBox4: TComboBox
+    Left = 488
+    Top = 112
+    Width = 145
+    Height = 21
+    ItemHeight = 13
+    TabOrder = 11
+    Text = 'ComboBox4'
+    Visible = False
+    Items.Strings = (
+      '1'
+      '2'
+      '3'
+      '4'
+      '5'
+      '6'
+      '7'
+      '8'
+      '9'
+      '10'
+      '11'
+      '12')
+  end
+  object Edit2: TEdit
+    Left = 488
+    Top = 136
+    Width = 145
+    Height = 21
+    TabOrder = 12
+    Text = 'Edit2'
+    Visible = False
+  end
+  object Edit3: TEdit
+    Left = 488
+    Top = 160
+    Width = 145
+    Height = 21
+    TabOrder = 13
+    Text = 'Edit3'
+    Visible = False
+  end
+  object Button2: TButton
+    Left = 656
+    Top = 56
+    Width = 113
+    Height = 25
+    Caption = #200#231#236#229#237#232#242#252
+    TabOrder = 14
+    Visible = False
+    OnClick = Button2Click
+  end
+  object Button5: TButton
+    Left = 656
+    Top = 24
+    Width = 113
+    Height = 25
+    Caption = #206#225#237#238#226#232#242#252' '#241#239#232#241#234#232
+    TabOrder = 15
+    Visible = False
+    OnClick = Button5Click
+  end
+  object Button7: TButton
+    Left = 488
+    Top = 192
+    Width = 145
+    Height = 25
+    Caption = #209#238#245#240#224#237#232#242#252
+    TabOrder = 16
+    Visible = False
+    OnClick = Button7Click
+  end
+  object Button8: TButton
+    Left = 664
+    Top = 192
+    Width = 75
+    Height = 25
+    Caption = #211#228#224#235#232#242#252
+    TabOrder = 17
+    Visible = False
+    OnClick = Button8Click
+  end
+  object ToolBar1: TToolBar
+    Left = 0
+    Top = 0
+    Width = 1025
+    Height = 29
+    Caption = 'ToolBar1'
+    TabOrder = 0
+  end
+  object Button3: TButton
+    Left = 24
+    Top = 104
+    Width = 75
+    Height = 25
+    Caption = #211#228#224#235#232#242#252
+    TabOrder = 1
+    OnClick = Button3Click
   end
   object Button4: TButton
     Left = 136
@@ -183,123 +300,6 @@ object Form1: TForm1
     TabOrder = 7
     OnClick = Button1Click
   end
-  object ComboBox1: TComboBox
-    Left = 520
-    Top = 40
-    Width = 145
-    Height = 21
-    ItemHeight = 13
-    TabOrder = 8
-    Text = 'ComboBox1'
-    Visible = False
-  end
-  object ComboBox2: TComboBox
-    Left = 528
-    Top = 64
-    Width = 145
-    Height = 21
-    ItemHeight = 13
-    TabOrder = 9
-    Text = 'ComboBox2'
-    Visible = False
-  end
-  object ComboBox3: TComboBox
-    Left = 528
-    Top = 88
-    Width = 145
-    Height = 21
-    ItemHeight = 13
-    TabOrder = 10
-    Text = 'ComboBox3'
-    Visible = False
-    Items.Strings = (
-      '2019'
-      '2020'
-      '2021'
-      '2022'
-      '2023')
-  end
-  object ComboBox4: TComboBox
-    Left = 528
-    Top = 112
-    Width = 145
-    Height = 21
-    ItemHeight = 13
-    TabOrder = 11
-    Text = 'ComboBox4'
-    Visible = False
-    Items.Strings = (
-      '1'
-      '2'
-      '3'
-      '4'
-      '5'
-      '6'
-      '7'
-      '8'
-      '9'
-      '10'
-      '11'
-      '12')
-  end
-  object Edit2: TEdit
-    Left = 528
-    Top = 136
-    Width = 145
-    Height = 21
-    TabOrder = 12
-    Text = 'Edit2'
-    Visible = False
-  end
-  object Edit3: TEdit
-    Left = 528
-    Top = 160
-    Width = 145
-    Height = 21
-    TabOrder = 13
-    Text = 'Edit3'
-    Visible = False
-  end
-  object Button2: TButton
-    Left = 696
-    Top = 56
-    Width = 113
-    Height = 25
-    Caption = #196#224#237#237#251#229' '#232#231' '#242#224#225#235#232#246#251
-    TabOrder = 14
-    Visible = False
-    OnClick = Button2Click
-  end
-  object Button5: TButton
-    Left = 696
-    Top = 24
-    Width = 113
-    Height = 25
-    Caption = #206#225#237#238#226#232#242#252' '#241#239#232#241#234#232
-    TabOrder = 15
-    Visible = False
-    OnClick = Button5Click
-  end
-  object Button7: TButton
-    Left = 528
-    Top = 192
-    Width = 145
-    Height = 25
-    Caption = #209#238#245#240#224#237#232#242#252
-    TabOrder = 16
-    Visible = False
-    OnClick = Button7Click
-  end
-  object Button8: TButton
-    Left = 704
-    Top = 192
-    Width = 75
-    Height = 25
-    Caption = #211#228#224#235#232#242#252
-    TabOrder = 17
-    Visible = False
-    OnClick = Button8Click
-  end
   object MainMenu1: TMainMenu
     Left = 104
     Top = 528
@@ -317,6 +317,10 @@ object Form1: TForm1
     object Addreprot1: TMenuItem
       Caption = 'Add reprot'
       OnClick = Addreprot1Click
+    end
+    object Yearplan1: TMenuItem
+      Caption = 'Year plan'
+      OnClick = Yearplan1Click
     end
   end
   object ActionList1: TActionList
