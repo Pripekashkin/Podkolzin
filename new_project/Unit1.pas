@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Menus, ActnList, StdActns, ImgList, ToolWin, ComCtrls, StdCtrls,
-  Grids, DBGrids, DB, IBDatabase, IBCustomDataSet, IBQuery, IniFiles;
+  Grids, DBGrids, DB, IBDatabase, IBCustomDataSet, IBQuery, IniFiles, comobj, wordxp;
 
 type
   TForm1 = class(TForm)
@@ -51,6 +51,8 @@ type
     Button7: TButton;
     Button8: TButton;
     Yearplan1: TMenuItem;
+    Button6: TButton;
+    Label8: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure Button4Click(Sender: TObject);
@@ -67,6 +69,7 @@ type
     procedure Button7Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
     procedure Yearplan1Click(Sender: TObject);
+    procedure Button6Click(Sender: TObject);
 
     
   private
@@ -77,6 +80,9 @@ type
     CheckRefresh: boolean;
     LineToId: Integer;
     DepartToId: Integer;
+    WordI: Integer;
+    Date: array [1..30] of string;
+
 
   public
     { Public declarations }
@@ -462,6 +468,98 @@ procedure TForm1.Yearplan1Click(Sender: TObject);
 begin
 Form1.Hide;
 Form2.Show;
+end;
+
+procedure TForm1.Button6Click(Sender: TObject);
+var
+  MS_Word, wdAD, wdTable: variant;
+  i, inc: Integer;
+begin
+    inc := 1;
+    WordI := 1;
+  with IBQuery3 do //find first field id
+  begin
+    SQL.Text := 'select report.rmonth, depart.name, line_item.info, report_content.report_sum  from report_content, report, depart, line_item where '+
+'(report_content.report_id = report.id) and '+
+'(line_item.id = report_content.line_item_id) and '+
+'(report.depart_id = depart.id) '+
+'order by info';
+    Open;
+    IBQuery3.First;
+    while not IBQuery3.Eof do
+    begin
+     //LineToId := IBQuery3['id'];  // here id of current line
+     Date[WordI] := IBQuery3['rmonth'];
+     WordI := WordI + 1;
+    // Label8.Caption := IBQuery3['name'];
+      IBQuery3.Next;
+    end;
+   IBQuery3.Close;
+  end;
+
+  MS_Word := CreateOleObject('Word.Application');
+  MS_Word.Visible := true;
+
+  MS_Word.Documents.Add('D:\delphi\new_project\pattern.dotx');
+  wdAD := MS_Word.ActiveDocument;
+
+  //MS_Word.Selection.Start := 0;
+  //MS_Word.Selection.End := 0;
+  //MS_Word.Selection.Find.Forward := True;//искать впереёд
+  //MS_Word.Selection.Find.Text := '{%data%}';
+
+  //while MS_Word.Selection.Find.Execute do
+  //begin
+   // MS_Word.Selection.Delete;
+   // MS_Word.Selection.InsertAfter('Text');
+  //end
+
+    MS_Word.Selection.Start := 0;
+    MS_Word.Selection.End := 0;
+    wdAD.Tables.Add(MS_Word.Selection.Range, WordI, 4);
+
+    wdTable := wdAD.Tables.Item(1);
+    wdTable.Borders.InsideLineStyle := wdLineStyleSingle;
+    wdTable.Borders.OutsideLineStyle := wdLineStyleSingle;
+    wdTable.Rows.Item(1).Select;
+    MS_Word.Selection.Font.Bold := 1;
+    MS_Word.Selection.ParagraphFormat.Alignment := wdAlignParagraphCenter;
+
+    wdTable.Cell(1,1).Range.Text := 'Date';
+    wdTable.Cell(1,2).Range.Text := 'Depart';
+    wdTable.Cell(1,3).Range.Text := 'Line' +#13+ 'item';
+    wdTable.Cell(1,4).Range.Text := 'Amount';
+
+    for i := 2 to WordI do
+    begin
+    wdTable.Cell(i,1).Range.Text := Date[inc];
+    inc := inc + 1;
+    end;
+    wdAD.ActiveWindow.View.ShowAll := false;
+
+   // wdTable.Columns.Item(1).Select;
+   // wdTable.Columns.Item(1).Width := 30;
+
+{
+   with IBQuery3 do //find first field id
+  begin
+    SQL.Text := 'select * from report';
+    Open;
+    IBQuery3.First;
+    while not IBQuery3.Eof do
+    begin
+     LineToId := IBQuery3['id'];  // here id of current line
+     wdAD.Range.InsertAfter(LineToId);
+      IBQuery3.Next;
+    end;
+   IBQuery3.Close;
+  end;
+
+  wdAD.Range.InsertAfter('fgfg');
+
+  }
+
+
 end;
 
 end.
