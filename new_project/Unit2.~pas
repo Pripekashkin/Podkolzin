@@ -83,7 +83,10 @@ FNew := true;
    IBDatabase1.Connected := true;
    with IBQuery1 do
    begin
-    SQL.Text := 'select *  from year_plan';
+    //SQL.Text := 'select *  from year_plan';
+    SQL.Text := 'select year_plan.id, depart.name, line_item.info, year_plan.pyear, year_plan.psum '+
+'from year_plan, depart, line_item '+
+'where (year_plan.depart_id = depart.id) and (year_plan.line_item_id = line_item.id)';
     Open;
    end;
   except
