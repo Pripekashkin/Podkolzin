@@ -50,6 +50,7 @@ type
     Label7: TLabel;
     Button7: TButton;
     Button8: TButton;
+    Yearplan1: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure Button4Click(Sender: TObject);
@@ -65,6 +66,7 @@ type
 //    procedure Button6Click(Sender: TObject);
     procedure Button7Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
+    procedure Yearplan1Click(Sender: TObject);
 
     
   private
@@ -84,6 +86,8 @@ var
   Form1: TForm1;
 
 implementation
+
+uses Unit2;
 
 {$R *.dfm}
 
@@ -453,5 +457,11 @@ end;
 
 
 
+
+procedure TForm1.Yearplan1Click(Sender: TObject);
+begin
+Form1.Hide;
+Form2.Show;
+end;
 
 end.
