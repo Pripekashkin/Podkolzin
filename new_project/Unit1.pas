@@ -81,7 +81,12 @@ type
     LineToId: Integer;
     DepartToId: Integer;
     WordI: Integer;
-    Date: array [1..30] of string;
+    DateM: array [1..30] of string;
+    DateY: array [1..30] of string;
+    NameD: array [1..30] of string;
+    Info: array [1..30] of string;
+    Sum: array [1..30] of string;
+
 
 
   public
@@ -479,7 +484,7 @@ begin
     WordI := 1;
   with IBQuery3 do //find first field id
   begin
-    SQL.Text := 'select report.rmonth, depart.name, line_item.info, report_content.report_sum  from report_content, report, depart, line_item where '+
+    SQL.Text := 'select report.rmonth, report.ryear, depart.name, line_item.info, report_content.report_sum  from report_content, report, depart, line_item where '+
 '(report_content.report_id = report.id) and '+
 '(line_item.id = report_content.line_item_id) and '+
 '(report.depart_id = depart.id) '+
@@ -489,7 +494,12 @@ begin
     while not IBQuery3.Eof do
     begin
      //LineToId := IBQuery3['id'];  // here id of current line
-     Date[WordI] := IBQuery3['rmonth'];
+     DateM[WordI] := IBQuery3['rmonth'];
+     DateY[WordI] := IBQuery3['ryear'];
+     NameD[WordI] := IBQuery3['name'];
+     Info[WordI] := IBQuery3['info'];
+     Sum[WordI] := IBQuery3['report_sum'];
+
      WordI := WordI + 1;
     // Label8.Caption := IBQuery3['name'];
       IBQuery3.Next;
@@ -532,7 +542,12 @@ begin
 
     for i := 2 to WordI do
     begin
-    wdTable.Cell(i,1).Range.Text := Date[inc];
+    wdTable.Rows.Item(i).Select;
+    MS_Word.Selection.ParagraphFormat.Alignment := wdAlignParagraphCenter;
+    wdTable.Cell(i,1).Range.Text := DateY[inc]+'.'+DateM[inc];
+    wdTable.Cell(i,2).Range.Text := NameD[inc];
+    wdTable.Cell(i,3).Range.Text := Info[inc];
+    wdTable.Cell(i,4).Range.Text := Sum[inc];
     inc := inc + 1;
     end;
     wdAD.ActiveWindow.View.ShowAll := false;

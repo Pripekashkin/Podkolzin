@@ -52,6 +52,7 @@ type
     Button8: TButton;
     Yearplan1: TMenuItem;
     Button6: TButton;
+    Label8: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure Button4Click(Sender: TObject);
@@ -79,6 +80,14 @@ type
     CheckRefresh: boolean;
     LineToId: Integer;
     DepartToId: Integer;
+    WordI: Integer;
+    DateM: array [1..30] of string;
+    DateY: array [1..30] of string;
+    NameD: array [1..30] of string;
+    Info: array [1..30] of string;
+    Sum: array [1..30] of string;
+
+
 
   public
     { Public declarations }
@@ -469,8 +478,35 @@ end;
 procedure TForm1.Button6Click(Sender: TObject);
 var
   MS_Word, wdAD, wdTable: variant;
-  i: Integer;
+  i, inc: Integer;
 begin
+    inc := 1;
+    WordI := 1;
+  with IBQuery3 do //find first field id
+  begin
+    SQL.Text := 'select report.rmonth, report.ryear, depart.name, line_item.info, report_content.report_sum  from report_content, report, depart, line_item where '+
+'(report_content.report_id = report.id) and '+
+'(line_item.id = report_content.line_item_id) and '+
+'(report.depart_id = depart.id) '+
+'order by info';
+    Open;
+    IBQuery3.First;
+    while not IBQuery3.Eof do
+    begin
+     //LineToId := IBQuery3['id'];  // here id of current line
+     DateM[WordI] := IBQuery3['rmonth'];
+     DateY[WordI] := IBQuery3['ryear'];
+     NameD[WordI] := IBQuery3['name'];
+     Info[WordI] := IBQuery3['info'];
+     Sum[WordI] := IBQuery3['report_sum'];
+
+     WordI := WordI + 1;
+    // Label8.Caption := IBQuery3['name'];
+      IBQuery3.Next;
+    end;
+   IBQuery3.Close;
+  end;
+
   MS_Word := CreateOleObject('Word.Application');
   MS_Word.Visible := true;
 
@@ -490,7 +526,7 @@ begin
 
     MS_Word.Selection.Start := 0;
     MS_Word.Selection.End := 0;
-    wdAD.Tables.Add(MS_Word.Selection.Range, 4, 4);
+    wdAD.Tables.Add(MS_Word.Selection.Range, WordI, 4);
 
     wdTable := wdAD.Tables.Item(1);
     wdTable.Borders.InsideLineStyle := wdLineStyleSingle;
@@ -503,6 +539,17 @@ begin
     wdTable.Cell(1,2).Range.Text := 'Depart';
     wdTable.Cell(1,3).Range.Text := 'Line' +#13+ 'item';
     wdTable.Cell(1,4).Range.Text := 'Amount';
+
+    for i := 2 to WordI do
+    begin
+    wdTable.Rows.Item(i).Select;
+    MS_Word.Selection.ParagraphFormat.Alignment := wdAlignParagraphCenter;
+    wdTable.Cell(i,1).Range.Text := DateY[inc]+'.'+DateM[inc];
+    wdTable.Cell(i,2).Range.Text := NameD[inc];
+    wdTable.Cell(i,3).Range.Text := Info[inc];
+    wdTable.Cell(i,4).Range.Text := Sum[inc];
+    inc := inc + 1;
+    end;
     wdAD.ActiveWindow.View.ShowAll := false;
 
    // wdTable.Columns.Item(1).Select;
