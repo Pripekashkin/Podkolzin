@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, IBDatabase, IBCustomDataSet, IBQuery, StdCtrls,
-  Grids, DBGrids, IniFiles, Menus, ImgList, ActnList;
+  Grids, DBGrids, IniFiles, Menus, ImgList, ActnList,comobj, wordxp;
 
 
 type
@@ -53,6 +53,7 @@ type
     Label4: TLabel;
     Button6: TButton;
     DataSource2: TDataSource;
+    Button7: TButton;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormCreate(Sender: TObject);
     procedure RadioButton1Click(Sender: TObject);
@@ -64,10 +65,16 @@ type
     procedure Makereport1Click(Sender: TObject);
     procedure Editlineitem1Click(Sender: TObject);
     procedure Button6Click(Sender: TObject);
+    procedure Button7Click(Sender: TObject);
   private
     FNew: Boolean;
     LineToId: Integer;
     DepartToId: Integer;
+    Depart: array [1..30] of string;
+    Line: array [1..30] of string;
+    Year: array [1..30] of string;
+    Sum: array [1..30] of string;
+    inc, ExcelI: integer;
   public
     { Public declarations }
   end;
@@ -375,6 +382,63 @@ begin
 '(rmonth <= '''+ComboBox7.Items[ComboBox7.ItemIndex]+''')';
     Open;
    end;
+end;
+
+procedure TForm2.Button7Click(Sender: TObject);
+var
+MS_Excel, xlsAD: variant;
+i: integer;
+begin
+  inc := 1;
+  ExcelI := 1;
+  with IBQuery3 do //find first field id
+  begin
+    SQL.Text := 'select depart.name,  line_item.info, year_plan.pyear, year_plan.psum '+
+'from year_plan, depart, line_item '+
+'where (year_plan.depart_id = depart.id) and '+
+'(year_plan.line_item_id = line_item.id)';
+    Open;
+    IBQuery3.First;
+    while not IBQuery3.Eof do
+    begin
+     Depart[ExcelI] := IBQuery3['name'];  // here id of current line
+     Line[ExcelI] := IBQuery3['info'];
+     Year[ExcelI] := IBQuery3['pyear'];
+     Sum[ExcelI] := IBQuery3['psum'];
+     ExcelI := ExcelI + 1;
+     IBQuery3.Next;
+    end;
+   IBQuery3.Close;
+  end;
+
+  MS_Excel := CreateOLEObject('Excel.Application');
+  MS_Excel.Visible := true;
+  MS_Excel.Workbooks.Add;
+  MS_Excel.Workbooks[1].WorkSheets[1].Name := 'line_item';
+  xlsAD := MS_Excel.Workbooks[1].WorkSheets[1].Columns;
+  //size
+  xlsAD.Columns[1].ColumnWidth:=20;
+  xlsAD.Columns[2].ColumnWidth:=20;
+  xlsAD.Columns[3].ColumnWidth:=10;
+  //bold
+  xlsAD := MS_Excel.Workbooks[1].WorkSheets['line_item'].Rows;
+  xlsAD.Rows[1].Font.Bold := true;
+  //name
+  xlsAD := MS_Excel.Workbooks[1].WorkSheets[1];
+  xlsAD.Cells[1,1] := 'Depart';
+  xlsAD.Cells[1,2] := 'Line Item';
+  xlsAD.Cells[1,3] := 'Year';
+  xlsAD.Cells[1,4] := 'Sum';
+
+
+  for i := 2 to ExcelI do
+  begin
+  xlsAD.Cells[i,1] := Depart[inc];
+  xlsAD.Cells[i,2] := Line[inc];
+  xlsAD.Cells[i,3] := Year[inc];
+  xlsAD.Cells[i,4] := Sum[inc];
+  inc := inc + 1;
+  end;
 end;
 
 end.
