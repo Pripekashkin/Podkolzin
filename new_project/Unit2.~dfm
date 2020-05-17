@@ -1,5 +1,5 @@
 object Form2: TForm2
-  Left = 536
+  Left = 342
   Top = 178
   Width = 997
   Height = 677
@@ -10,6 +10,7 @@ object Form2: TForm2
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  Menu = MainMenu1
   OldCreateOrder = False
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
@@ -67,9 +68,74 @@ object Form2: TForm2
     Font.Style = []
     ParentFont = False
   end
+  object Label5: TLabel
+    Left = 696
+    Top = 8
+    Width = 9
+    Height = 16
+    Caption = #209
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label7: TLabel
+    Left = 784
+    Top = 8
+    Width = 18
+    Height = 16
+    Caption = #207#238
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label8: TLabel
+    Left = 632
+    Top = 56
+    Width = 23
+    Height = 16
+    Caption = #195#238#228
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label10: TLabel
+    Left = 624
+    Top = 32
+    Width = 41
+    Height = 16
+    Caption = #204#229#241#255#246
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label9: TLabel
+    Left = 552
+    Top = 88
+    Width = 116
+    Height = 16
+    Caption = #209#242#224#242#252#241#255' '#240#224#241#245#238#228#238#226
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+  end
   object Label4: TLabel
-    Left = 496
-    Top = 176
+    Left = 360
+    Top = 208
     Width = 32
     Height = 13
     Caption = 'Label4'
@@ -164,8 +230,7 @@ object Form2: TForm2
       '2020'
       '2021'
       '2022'
-      '2023'
-      '')
+      '2023')
   end
   object Edit1: TEdit
     Left = 296
@@ -183,6 +248,107 @@ object Form2: TForm2
     Caption = #206#225#237#238#226#232#242#252
     TabOrder = 10
     OnClick = Button2Click
+  end
+  object ComboBox4: TComboBox
+    Left = 672
+    Top = 88
+    Width = 161
+    Height = 21
+    ItemHeight = 13
+    TabOrder = 11
+    Text = 'ComboBox4'
+  end
+  object ComboBox5: TComboBox
+    Left = 672
+    Top = 32
+    Width = 73
+    Height = 21
+    ItemHeight = 13
+    TabOrder = 12
+    Text = 'ComboBox5'
+    Items.Strings = (
+      '1'
+      '2'
+      '3'
+      '4'
+      '5'
+      '6'
+      '7'
+      '8'
+      '9'
+      '10'
+      '11'
+      '12')
+  end
+  object ComboBox6: TComboBox
+    Left = 672
+    Top = 56
+    Width = 73
+    Height = 21
+    ItemHeight = 13
+    TabOrder = 13
+    Text = 'ComboBox6'
+    Items.Strings = (
+      '2019'
+      '2020'
+      '2021'
+      '2022'
+      '2023')
+  end
+  object ComboBox7: TComboBox
+    Left = 760
+    Top = 32
+    Width = 73
+    Height = 21
+    ItemHeight = 13
+    TabOrder = 14
+    Text = 'ComboBox7'
+    Items.Strings = (
+      '1'
+      '2'
+      '3'
+      '4'
+      '5'
+      '6'
+      '7'
+      '8'
+      '9'
+      '10'
+      '11'
+      '12')
+  end
+  object ComboBox8: TComboBox
+    Left = 760
+    Top = 56
+    Width = 73
+    Height = 21
+    ItemHeight = 13
+    TabOrder = 15
+    Text = 'ComboBox8'
+    Items.Strings = (
+      '2019'
+      '2020'
+      '2021'
+      '2022'
+      '2023')
+  end
+  object Button5: TButton
+    Left = 848
+    Top = 80
+    Width = 75
+    Height = 25
+    Caption = #206#225#237#238#226#232#242#252
+    TabOrder = 16
+    OnClick = Button5Click
+  end
+  object Button6: TButton
+    Left = 640
+    Top = 128
+    Width = 209
+    Height = 25
+    Caption = #194#251#226#229#241#242#232
+    TabOrder = 17
+    OnClick = Button6Click
   end
   object IBDatabase1: TIBDatabase
     Params.Strings = (
@@ -256,5 +422,33 @@ object Form2: TForm2
     AutoStopAction = saNone
     Left = 656
     Top = 568
+  end
+  object MainMenu1: TMainMenu
+    Left = 104
+    Top = 528
+    object Editlineitem1: TMenuItem
+      Caption = 'Edit year plan'
+      OnClick = Editlineitem1Click
+    end
+    object Makereport1: TMenuItem
+      Caption = 'Make report'
+      OnClick = Makereport1Click
+    end
+  end
+  object ActionList1: TActionList
+    Left = 168
+    Top = 528
+    object Action1: TAction
+      Caption = 'Action1'
+    end
+  end
+  object ImageList1: TImageList
+    Left = 248
+    Top = 536
+  end
+  object DataSource2: TDataSource
+    DataSet = IBQuery1
+    Left = 792
+    Top = 480
   end
 end
