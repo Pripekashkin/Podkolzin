@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 112
-  Top = 350
+  Left = 255
+  Top = 278
   Width = 996
   Height = 687
   Caption = 'Form1'
@@ -106,6 +106,13 @@ object Form1: TForm1
     Width = 17
     Height = 13
     Caption = 'test'
+  end
+  object Label8: TLabel
+    Left = 680
+    Top = 168
+    Width = 32
+    Height = 13
+    Caption = 'Label8'
   end
   object DBGrid1: TDBGrid
     Left = 32
@@ -299,6 +306,15 @@ object Form1: TForm1
     Caption = #200#231#236#229#237#232#242#252
     TabOrder = 7
     OnClick = Button1Click
+  end
+  object Button6: TButton
+    Left = 792
+    Top = 128
+    Width = 129
+    Height = 25
+    Caption = #221#234#241#239#238#240#242
+    TabOrder = 18
+    OnClick = Button6Click
   end
   object MainMenu1: TMainMenu
     Left = 104
