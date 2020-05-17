@@ -47,7 +47,6 @@ type
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
-    Button6: TButton;
     Label7: TLabel;
     Button7: TButton;
     Button8: TButton;
@@ -66,6 +65,8 @@ type
 //    procedure Button6Click(Sender: TObject);
     procedure Button7Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
+
+    
   private
     FNew: Boolean;
     CheckFirstTable: String;
@@ -192,6 +193,28 @@ end;
 
 procedure TForm1.Depart1Click(Sender: TObject);
 begin
+  Label1.Visible := false;
+  Label2.Visible := false;
+  Label3.Visible := false;
+  Label4.Visible := false;
+  Label5.Visible := false;
+  Label6.Visible := false;
+  ComboBox1.Visible := false;
+  ComboBox2.Visible := false;
+  ComboBox3.Visible := false;
+  ComboBox4.Visible := false;
+  Edit2.Visible := false;
+  Edit3.Visible := false;
+  Button2.Visible := false;
+  Button5.Visible := false;
+  Button7.Visible := false;
+  Button8.Visible := false;
+  Edit1.Visible := true;
+  Button1.Visible := true;
+  Button3.Visible := true;
+  Button4.Visible := true;
+
+
   CheckFirstTable := 'depart';
   ExecuteProcedure := 'proc_depart';
   Select := 'name';
@@ -204,6 +227,22 @@ end;
 
 procedure TForm1.Line1Click(Sender: TObject);
 begin
+  Label1.Visible := false;
+  Label2.Visible := false;
+  Label3.Visible := false;
+  Label4.Visible := false;
+  Label5.Visible := false;
+  Label6.Visible := false;
+  ComboBox1.Visible := false;
+  ComboBox2.Visible := false;
+  ComboBox3.Visible := false;
+  ComboBox4.Visible := false;
+  Edit2.Visible := false;
+  Edit3.Visible := false;
+  Button2.Visible := false;
+  Button5.Visible := false;
+  Button7.Visible := false;
+  Button8.Visible := false;
   CheckFirstTable := 'line_item';
   ExecuteProcedure := 'proc_line';
   Select := 'info';
@@ -216,6 +255,28 @@ end;
 
 procedure TForm1.Addreprot1Click(Sender: TObject);
 begin
+   Edit1.Visible := false;
+  Button1.Visible := false;
+  Button3.Visible := false;
+  Button4.Visible := false;
+  Label1.Visible := true;
+  Label2.Visible := true;
+  Label3.Visible := true;
+  Label4.Visible := true;
+  Label5.Visible := true;
+  Label6.Visible := true;
+  ComboBox1.Visible := true;
+  ComboBox2.Visible := true;
+  ComboBox3.Visible := true;
+  ComboBox4.Visible := true;
+  Edit2.Visible := true;
+  Edit3.Visible := true;
+  Button2.Visible := true;
+  Button5.Visible := true;
+  Button7.Visible := true;
+  Button8.Visible := true;
+
+
   with IBQuery1 do
    begin
     SQL.Text := 'select report.id, line_item.info, depart.name, report.ryear, report.rmonth, report_content.info, report_content.report_sum ' +
@@ -230,12 +291,17 @@ end;
 procedure TForm1.Button2Click(Sender: TObject);
 begin
     FNew := false;
-    ComboBox1.Text :=  DBGrid1.columns[1].Field.asString;
-    ComboBox2.Text :=  DBGrid1.columns[2].Field.asString;
-    ComboBox3.Text :=  DBGrid1.columns[3].Field.asString;
-    ComboBox4.Text :=  DBGrid1.columns[4].Field.asString;
+    //Combobox1.Items.Add(DBGrid1.columns[1].Field.asString);
+    //Combobox2.Items.Add(DBGrid1.columns[2].Field.asString);
+    //Combobox3.Items.Add(DBGrid1.columns[3].Field.asString);
+    //Combobox4.Items.Add(DBGrid1.columns[4].Field.asString);
+    //ComboBox1.Text :=  DBGrid1.columns[1].Field.asString;
+    //ComboBox2.Text :=  DBGrid1.columns[2].Field.asString;
+    //ComboBox3.Text :=  DBGrid1.columns[3].Field.asString;
+    //ComboBox4.Text :=  DBGrid1.columns[4].Field.asString;
     Edit2.Text := DBGrid1.columns[5].Field.asString;
     Edit3.Text := DBGrid1.columns[6].Field.asString;
+    
 end;
 
 procedure TForm1.Button5Click(Sender: TObject);
@@ -333,7 +399,6 @@ begin
     if FNew then
       SQL.Text := 'execute procedure proc_report(-1, ''' +  ComboBox3.Items[ComboBox3.ItemIndex] + ''', ''' + ComboBox4.Items[ComboBox4.ItemIndex] + ''', ' +IntToStr(DepartToId) + ', '+ IntToStr(LineToId) +', '''+ Edit2.Text +''', '''+Edit3.Text+''')'
     else
-     // SQL.Text := 'execute procedure INSERT_TRANSACTION(' +IBQuery1.FieldByName('ID_TRANS').AsString + ', ''' +  ComboBox1.Items[ComboBox1.ItemIndex] + ''', ''' + Edit1.Text + ''',''' +  ComboBox2.Items[ComboBox2.ItemIndex] + ''', ' + Edit2.Text + ')';
       SQL.Text := 'execute procedure proc_report(' +IBQuery1.FieldByName('ID').AsString + ', ''' +  ComboBox3.Items[ComboBox3.ItemIndex] + ''', ''' + ComboBox4.Items[ComboBox4.ItemIndex] + ''', ' +IntToStr(DepartToId) + ', '+ IntToStr(LineToId) +', '''+ Edit2.Text +''', '''+Edit3.Text+''')';
     Transaction.StartTransaction;
     ExecSQL;
@@ -351,6 +416,7 @@ begin
       Application.MessageBox(Pchar(E.Message), 'error', MB_ICONERROR);
    end;
   end;
+   //Label7.Caption := 'SQL.Text := execute procedure proc_report(-1, ''' +  ComboBox3.Items[ComboBox3.ItemIndex] + ''', ''' + ComboBox4.Items[ComboBox4.ItemIndex] + ''', ' +IntToStr(DepartToId) + ', '+ IntToStr(LineToId) +', '''+ Edit2.Text +''', '''+Edit3.Text+''')'
 end;
 
 procedure TForm1.Button8Click(Sender: TObject);
@@ -384,5 +450,8 @@ begin
    end;
   end;
 end;
+
+
+
 
 end.
