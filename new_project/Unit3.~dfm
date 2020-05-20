@@ -1,0 +1,41 @@
+object Form3: TForm3
+  Left = 535
+  Top = 182
+  Width = 464
+  Height = 303
+  Caption = 'Main menu'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Button1: TButton
+    Left = 48
+    Top = 64
+    Width = 353
+    Height = 33
+    Caption = 'Add depart or line item'
+    TabOrder = 0
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Left = 48
+    Top = 112
+    Width = 353
+    Height = 33
+    Caption = 'Make report'
+    TabOrder = 1
+  end
+  object Button3: TButton
+    Left = 48
+    Top = 160
+    Width = 353
+    Height = 33
+    Caption = 'Make year plan'
+    TabOrder = 2
+  end
+end

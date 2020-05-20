@@ -86,6 +86,7 @@ type
     NameD: array [1..30] of string;
     Info: array [1..30] of string;
     Sum: array [1..30] of string;
+    inc, ExcelI: integer;
 
 
 

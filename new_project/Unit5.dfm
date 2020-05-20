@@ -1,9 +1,9 @@
-object Form1: TForm1
-  Left = 1032
-  Top = 156
-  Width = 1007
-  Height = 866
-  Caption = 'Form1'
+object Form5: TForm5
+  Left = 433
+  Top = 204
+  Width = 1392
+  Height = 720
+  Caption = 'Form5'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,16 +12,14 @@ object Form1: TForm1
   Font.Style = []
   Menu = MainMenu1
   OldCreateOrder = False
-  OnCloseQuery = FormCloseQuery
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
-    Left = 416
+    Left = 392
     Top = 40
-    Width = 53
+    Width = 94
     Height = 16
-    Caption = 'Line item'
+    Caption = #209#242#224#242#252#255' '#231#224#242#240#224#242
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -35,7 +33,7 @@ object Form1: TForm1
     Top = 64
     Width = 41
     Height = 16
-    Caption = 'Depart'
+    Caption = #206#242#228#229#235
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -47,9 +45,9 @@ object Form1: TForm1
   object Label3: TLabel
     Left = 432
     Top = 88
-    Width = 29
+    Width = 23
     Height = 16
-    Caption = 'Year'
+    Caption = #195#238#228
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -61,9 +59,9 @@ object Form1: TForm1
   object Label4: TLabel
     Left = 432
     Top = 112
-    Width = 36
+    Width = 41
     Height = 16
-    Caption = 'Month'
+    Caption = #204#229#241#255#246
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -73,11 +71,11 @@ object Form1: TForm1
     Visible = False
   end
   object Label5: TLabel
-    Left = 440
+    Left = 400
     Top = 136
-    Width = 21
+    Width = 85
     Height = 16
-    Caption = 'Info'
+    Caption = #200#237#244#238#240#236#224#246#232#255
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -87,11 +85,11 @@ object Form1: TForm1
     Visible = False
   end
   object Label6: TLabel
-    Left = 440
+    Left = 424
     Top = 160
-    Width = 27
+    Width = 43
     Height = 16
-    Caption = 'Sum'
+    Caption = #209#243#236#236#224
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -99,13 +97,6 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
     Visible = False
-  end
-  object Label7: TLabel
-    Left = 1008
-    Top = 336
-    Width = 17
-    Height = 13
-    Caption = 'test'
   end
   object Label8: TLabel
     Left = 680
@@ -115,18 +106,39 @@ object Form1: TForm1
     Caption = 'Label8'
     Visible = False
   end
-  object DBGrid1: TDBGrid
-    Left = 32
-    Top = 240
-    Width = 945
-    Height = 217
-    DataSource = DataSource1
-    TabOrder = 2
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
+  object Label7: TLabel
+    Left = 0
+    Top = 64
+    Width = 74
+    Height = 20
+    Caption = #196#229#233#241#242#226#232#229
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label9: TLabel
+    Left = 40
+    Top = 32
+    Width = 219
+    Height = 20
+    Caption = #200#231#236#229#237#229#237#232#229' '#241#238#241#242#224#226#224' '#238#242#228#229#235#238#226
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+  end
+  object ToolBar1: TToolBar
+    Left = 0
+    Top = 0
+    Width = 1376
+    Height = 29
+    Caption = 'ToolBar1'
+    TabOrder = 0
   end
   object ComboBox1: TComboBox
     Left = 488
@@ -134,7 +146,7 @@ object Form1: TForm1
     Width = 145
     Height = 21
     ItemHeight = 13
-    TabOrder = 8
+    TabOrder = 1
     Text = 'ComboBox1'
     Visible = False
   end
@@ -144,7 +156,7 @@ object Form1: TForm1
     Width = 145
     Height = 21
     ItemHeight = 13
-    TabOrder = 9
+    TabOrder = 2
     Text = 'ComboBox2'
     Visible = False
   end
@@ -154,7 +166,7 @@ object Form1: TForm1
     Width = 145
     Height = 21
     ItemHeight = 13
-    TabOrder = 10
+    TabOrder = 3
     Text = 'ComboBox3'
     Visible = False
     Items.Strings = (
@@ -170,7 +182,7 @@ object Form1: TForm1
     Width = 145
     Height = 21
     ItemHeight = 13
-    TabOrder = 11
+    TabOrder = 4
     Text = 'ComboBox4'
     Visible = False
     Items.Strings = (
@@ -192,7 +204,7 @@ object Form1: TForm1
     Top = 136
     Width = 145
     Height = 21
-    TabOrder = 12
+    TabOrder = 5
     Text = 'Edit2'
     Visible = False
   end
@@ -201,7 +213,7 @@ object Form1: TForm1
     Top = 160
     Width = 145
     Height = 21
-    TabOrder = 13
+    TabOrder = 6
     Text = 'Edit3'
     Visible = False
   end
@@ -211,19 +223,8 @@ object Form1: TForm1
     Width = 113
     Height = 25
     Caption = 'Edit field'
-    TabOrder = 14
+    TabOrder = 7
     Visible = False
-    OnClick = Button2Click
-  end
-  object Button5: TButton
-    Left = 656
-    Top = 24
-    Width = 113
-    Height = 25
-    Caption = 'Refresh'
-    TabOrder = 15
-    Visible = False
-    OnClick = Button5Click
   end
   object Button7: TButton
     Left = 488
@@ -231,9 +232,8 @@ object Form1: TForm1
     Width = 145
     Height = 25
     Caption = 'Save'
-    TabOrder = 16
+    TabOrder = 8
     Visible = False
-    OnClick = Button7Click
   end
   object Button8: TButton
     Left = 664
@@ -241,72 +241,8 @@ object Form1: TForm1
     Width = 75
     Height = 25
     Caption = 'Delete'
-    TabOrder = 17
+    TabOrder = 9
     Visible = False
-    OnClick = Button8Click
-  end
-  object ToolBar1: TToolBar
-    Left = 0
-    Top = 0
-    Width = 1025
-    Height = 29
-    Caption = 'ToolBar1'
-    TabOrder = 0
-  end
-  object Button3: TButton
-    Left = 24
-    Top = 104
-    Width = 75
-    Height = 25
-    Caption = 'Delete'
-    TabOrder = 1
-    OnClick = Button3Click
-  end
-  object Button4: TButton
-    Left = 136
-    Top = 104
-    Width = 121
-    Height = 25
-    Caption = 'Save'
-    TabOrder = 3
-    OnClick = Button4Click
-  end
-  object Edit1: TEdit
-    Left = 136
-    Top = 48
-    Width = 121
-    Height = 21
-    TabOrder = 4
-    Text = 'Edit1'
-  end
-  object RadioButton1: TRadioButton
-    Left = 16
-    Top = 48
-    Width = 113
-    Height = 17
-    Caption = 'Add'
-    Checked = True
-    TabOrder = 5
-    TabStop = True
-    OnClick = RadioButton1Click
-  end
-  object RadioButton2: TRadioButton
-    Left = 16
-    Top = 72
-    Width = 113
-    Height = 17
-    Caption = 'Edit'
-    TabOrder = 6
-    OnClick = RadioButton2Click
-  end
-  object Button1: TButton
-    Left = 264
-    Top = 48
-    Width = 75
-    Height = 25
-    Caption = 'Edit field'
-    TabOrder = 7
-    OnClick = Button1Click
   end
   object Button6: TButton
     Left = 792
@@ -314,8 +250,55 @@ object Form1: TForm1
     Width = 129
     Height = 25
     Caption = 'Export'
-    TabOrder = 18
-    OnClick = Button6Click
+    TabOrder = 10
+  end
+  object Button5: TButton
+    Left = 656
+    Top = 24
+    Width = 113
+    Height = 25
+    Caption = 'Refresh'
+    TabOrder = 11
+    Visible = False
+  end
+  object RadioButton1: TRadioButton
+    Left = 0
+    Top = 88
+    Width = 90
+    Height = 17
+    Caption = #196#238#225#224#226#232#242#252
+    Checked = True
+    TabOrder = 12
+    TabStop = True
+  end
+  object RadioButton2: TRadioButton
+    Left = 0
+    Top = 112
+    Width = 90
+    Height = 17
+    Caption = #208#229#228#224#234#242#232#240#238#226#224#242#252
+    TabOrder = 13
+  end
+  object Button3: TButton
+    Left = 8
+    Top = 152
+    Width = 75
+    Height = 25
+    Caption = #211#228#224#235#232#242#252
+    TabOrder = 14
+  end
+  object DBGrid1: TDBGrid
+    Left = 16
+    Top = 272
+    Width = 945
+    Height = 217
+    DataSource = DataSource1
+    TabOrder = 15
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'MS Sans Serif'
+    TitleFont.Style = []
   end
   object MainMenu1: TMainMenu
     Left = 104
@@ -324,20 +307,16 @@ object Form1: TForm1
       Caption = 'Edit main'
       object Depart1: TMenuItem
         Caption = 'Depart'
-        OnClick = Depart1Click
       end
       object Line1: TMenuItem
         Caption = 'Line item'
-        OnClick = Line1Click
       end
     end
     object Addreprot1: TMenuItem
       Caption = 'Add reprot'
-      OnClick = Addreprot1Click
     end
     object Yearplan1: TMenuItem
       Caption = 'Year plan'
-      OnClick = Yearplan1Click
     end
   end
   object ActionList1: TActionList
@@ -360,7 +339,7 @@ object Form1: TForm1
     SQLDialect = 3
     TraceFlags = []
     Left = 544
-    Top = 488
+    Top = 504
   end
   object IBQuery1: TIBQuery
     Database = IBDatabase1
@@ -368,7 +347,7 @@ object Form1: TForm1
     BufferChunks = 1000
     CachedUpdates = False
     Left = 600
-    Top = 488
+    Top = 504
   end
   object IBTransaction1: TIBTransaction
     Active = False
@@ -379,12 +358,12 @@ object Form1: TForm1
       'nowait')
     AutoStopAction = saNone
     Left = 656
-    Top = 488
+    Top = 504
   end
   object DataSource1: TDataSource
     DataSet = IBQuery1
     Left = 736
-    Top = 480
+    Top = 496
   end
   object IBQuery2: TIBQuery
     Database = IBDatabase1
@@ -392,7 +371,7 @@ object Form1: TForm1
     BufferChunks = 1000
     CachedUpdates = False
     Left = 600
-    Top = 528
+    Top = 544
   end
   object IBTransaction2: TIBTransaction
     Active = False
@@ -403,7 +382,7 @@ object Form1: TForm1
       'nowait')
     AutoStopAction = saNone
     Left = 656
-    Top = 528
+    Top = 544
   end
   object IBQuery3: TIBQuery
     Database = IBDatabase1
@@ -411,7 +390,7 @@ object Form1: TForm1
     BufferChunks = 1000
     CachedUpdates = False
     Left = 600
-    Top = 568
+    Top = 584
   end
   object IBTransaction3: TIBTransaction
     Active = False
@@ -422,6 +401,6 @@ object Form1: TForm1
       'nowait')
     AutoStopAction = saNone
     Left = 656
-    Top = 568
+    Top = 584
   end
 end

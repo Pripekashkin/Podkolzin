@@ -1,8 +1,8 @@
 object Form1: TForm1
-  Left = 255
-  Top = 278
-  Width = 996
-  Height = 687
+  Left = 1046
+  Top = 251
+  Width = 1007
+  Height = 866
   Caption = 'Form1'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,11 +17,11 @@ object Form1: TForm1
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
-    Left = 360
+    Left = 416
     Top = 40
-    Width = 116
+    Width = 53
     Height = 16
-    Caption = #209#242#224#242#252#241#255' '#240#224#241#245#238#228#238#226
+    Caption = 'Line item'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -31,11 +31,11 @@ object Form1: TForm1
     Visible = False
   end
   object Label2: TLabel
-    Left = 376
+    Left = 424
     Top = 64
-    Width = 88
+    Width = 41
     Height = 16
-    Caption = #196#229#239#224#240#242#224#236#229#237#242
+    Caption = 'Depart'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -45,11 +45,11 @@ object Form1: TForm1
     Visible = False
   end
   object Label3: TLabel
-    Left = 408
+    Left = 432
     Top = 88
-    Width = 23
+    Width = 29
     Height = 16
-    Caption = #195#238#228
+    Caption = 'Year'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -59,11 +59,11 @@ object Form1: TForm1
     Visible = False
   end
   object Label4: TLabel
-    Left = 400
+    Left = 432
     Top = 112
-    Width = 41
+    Width = 36
     Height = 16
-    Caption = #204#229#241#255#246
+    Caption = 'Month'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -73,11 +73,11 @@ object Form1: TForm1
     Visible = False
   end
   object Label5: TLabel
-    Left = 376
+    Left = 440
     Top = 136
-    Width = 85
+    Width = 21
     Height = 16
-    Caption = #200#237#244#238#240#236#224#246#232#255
+    Caption = 'Info'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -87,11 +87,11 @@ object Form1: TForm1
     Visible = False
   end
   object Label6: TLabel
-    Left = 400
+    Left = 440
     Top = 160
-    Width = 43
+    Width = 27
     Height = 16
-    Caption = #209#243#236#236#224
+    Caption = 'Sum'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -113,6 +113,7 @@ object Form1: TForm1
     Width = 32
     Height = 13
     Caption = 'Label8'
+    Visible = False
   end
   object DBGrid1: TDBGrid
     Left = 32
@@ -209,7 +210,7 @@ object Form1: TForm1
     Top = 56
     Width = 113
     Height = 25
-    Caption = #200#231#236#229#237#232#242#252
+    Caption = 'Edit field'
     TabOrder = 14
     Visible = False
     OnClick = Button2Click
@@ -219,7 +220,7 @@ object Form1: TForm1
     Top = 24
     Width = 113
     Height = 25
-    Caption = #206#225#237#238#226#232#242#252' '#241#239#232#241#234#232
+    Caption = 'Refresh'
     TabOrder = 15
     Visible = False
     OnClick = Button5Click
@@ -229,7 +230,7 @@ object Form1: TForm1
     Top = 192
     Width = 145
     Height = 25
-    Caption = #209#238#245#240#224#237#232#242#252
+    Caption = 'Save'
     TabOrder = 16
     Visible = False
     OnClick = Button7Click
@@ -239,7 +240,7 @@ object Form1: TForm1
     Top = 192
     Width = 75
     Height = 25
-    Caption = #211#228#224#235#232#242#252
+    Caption = 'Delete'
     TabOrder = 17
     Visible = False
     OnClick = Button8Click
@@ -257,7 +258,7 @@ object Form1: TForm1
     Top = 104
     Width = 75
     Height = 25
-    Caption = #211#228#224#235#232#242#252
+    Caption = 'Delete'
     TabOrder = 1
     OnClick = Button3Click
   end
@@ -266,7 +267,7 @@ object Form1: TForm1
     Top = 104
     Width = 121
     Height = 25
-    Caption = #209#238#245#240#224#237#232#242#252
+    Caption = 'Save'
     TabOrder = 3
     OnClick = Button4Click
   end
@@ -283,7 +284,7 @@ object Form1: TForm1
     Top = 48
     Width = 113
     Height = 17
-    Caption = #196#238#225#224#226#232#242#252
+    Caption = 'Add'
     Checked = True
     TabOrder = 5
     TabStop = True
@@ -294,7 +295,7 @@ object Form1: TForm1
     Top = 72
     Width = 113
     Height = 17
-    Caption = #208#229#228#224#234#242#232#240#238#226#224#242#252
+    Caption = 'Edit'
     TabOrder = 6
     OnClick = RadioButton2Click
   end
@@ -303,7 +304,7 @@ object Form1: TForm1
     Top = 48
     Width = 75
     Height = 25
-    Caption = #200#231#236#229#237#232#242#252
+    Caption = 'Edit field'
     TabOrder = 7
     OnClick = Button1Click
   end
@@ -312,7 +313,7 @@ object Form1: TForm1
     Top = 128
     Width = 129
     Height = 25
-    Caption = #221#234#241#239#238#240#242
+    Caption = 'Export'
     TabOrder = 18
     OnClick = Button6Click
   end
