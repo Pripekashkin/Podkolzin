@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Grids, DBGrids, StdCtrls, ToolWin, ComCtrls, DB, IBDatabase,
-  IBCustomDataSet, IBQuery, ImgList, ActnList, Menus;
+  IBCustomDataSet, IBQuery, ImgList, ActnList, Menus, IniFiles;
 
 type
   TForm5 = class(TForm)
@@ -48,7 +48,7 @@ type
     IBTransaction3: TIBTransaction;
     procedure FormCreate(Sender: TObject);
   private
-    { Private declarations }
+    FNew: boolean;
   public
     { Public declarations }
   end;
@@ -64,16 +64,37 @@ implementation
 
 
 procedure TForm5.FormCreate(Sender: TObject);
+
+var
+  FIniFile: TIniFile;
 begin
-    with IBQuery1 do
+  FNew := true;
+  try
+    FIniFile := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'Config.ini');
+    try
+      IBDatabase1.DatabaseName := FIniFile.ReadString('Base', 'Path', '');
+   finally
+     FIniFile.Free;
+   end;
+   IBDatabase1.Connected := true;
+   with IBQuery1 do
    begin
-    SQL.Text := 'select report.id, line_item.info, depart.name, report.ryear, report.rmonth, report_content.info, report_content.report_sum ' +
+    SQL.Text := 'select report.id as "Номер", line_item.info as "Статья затрат", depart.name as "Иия отдела", report.ryear as "Год", report.rmonth as "Месяц", report_content.info as Информация, report_content.report_sum as "Сумма"' +
  'from report_content, report, line_item, depart ' +
 'where (report.id = report_content.report_id) and ' +
       '(line_item.id = report_content.line_item_id) and ' +
       '(report.depart_id = depart.id)';
     Open;
    end;
+  except
+   on E: Exception do
+  begin
+      Application.MessageBox(Pchar(E.Message), 'error', MB_ICONERROR);
+      Halt;
+   end;
+  end;
 end;
+
+
 
 end.

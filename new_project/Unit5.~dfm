@@ -269,6 +269,7 @@ object Form5: TForm5
     Top = 272
     Width = 945
     Height = 217
+    DataSource = DataSource1
     TabOrder = 15
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -302,16 +303,16 @@ object Form5: TForm5
     IdleTimer = 0
     SQLDialect = 3
     TraceFlags = []
-    Left = 544
-    Top = 488
+    Left = 496
+    Top = 520
   end
   object IBQuery1: TIBQuery
     Database = IBDatabase1
     Transaction = IBTransaction1
     BufferChunks = 1000
     CachedUpdates = False
-    Left = 600
-    Top = 488
+    Left = 552
+    Top = 520
   end
   object IBTransaction1: TIBTransaction
     Active = False
@@ -321,21 +322,21 @@ object Form5: TForm5
       'rec_version'
       'nowait')
     AutoStopAction = saNone
-    Left = 656
-    Top = 488
+    Left = 608
+    Top = 520
   end
   object DataSource1: TDataSource
     DataSet = IBQuery1
-    Left = 736
-    Top = 480
+    Left = 688
+    Top = 512
   end
   object IBQuery2: TIBQuery
     Database = IBDatabase1
     Transaction = IBTransaction2
     BufferChunks = 1000
     CachedUpdates = False
-    Left = 600
-    Top = 528
+    Left = 552
+    Top = 560
   end
   object IBTransaction2: TIBTransaction
     Active = False
@@ -345,16 +346,16 @@ object Form5: TForm5
       'rec_version'
       'nowait')
     AutoStopAction = saNone
-    Left = 656
-    Top = 528
+    Left = 608
+    Top = 560
   end
   object IBQuery3: TIBQuery
     Database = IBDatabase1
     Transaction = IBTransaction3
     BufferChunks = 1000
     CachedUpdates = False
-    Left = 600
-    Top = 568
+    Left = 552
+    Top = 600
   end
   object IBTransaction3: TIBTransaction
     Active = False
@@ -364,7 +365,7 @@ object Form5: TForm5
       'rec_version'
       'nowait')
     AutoStopAction = saNone
-    Left = 656
-    Top = 568
+    Left = 608
+    Top = 600
   end
 end
