@@ -1,9 +1,8 @@
 object Form4: TForm4
-  Left = 1155
-  Top = 319
-  Width = 644
-  Height = 683
-  Caption = 'Form4'
+  Left = -883
+  Top = 123
+  Width = 766
+  Height = 745
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -45,21 +44,21 @@ object Form4: TForm4
   object ToolBar1: TToolBar
     Left = 0
     Top = 0
-    Width = 628
+    Width = 750
     Height = 29
     Caption = 'ToolBar1'
     TabOrder = 0
   end
   object Button3: TButton
     Left = 8
-    Top = 136
+    Top = 152
     Width = 75
     Height = 25
     Caption = #211#228#224#235#232#242#252
     TabOrder = 1
   end
   object Button4: TButton
-    Left = 96
+    Left = 136
     Top = 136
     Width = 121
     Height = 25
@@ -68,11 +67,12 @@ object Form4: TForm4
     OnClick = Button4Click
   end
   object Edit1: TEdit
-    Left = 96
+    Left = 120
     Top = 72
-    Width = 121
+    Width = 145
     Height = 21
     TabOrder = 3
+    OnDblClick = Edit1DblClick
   end
   object RadioButton1: TRadioButton
     Left = 0
@@ -83,6 +83,7 @@ object Form4: TForm4
     Checked = True
     TabOrder = 4
     TabStop = True
+    OnClick = RadioButton1Click
   end
   object RadioButton2: TRadioButton
     Left = 0
@@ -91,14 +92,7 @@ object Form4: TForm4
     Height = 17
     Caption = #208#229#228#224#234#242#232#240#238#226#224#242#252
     TabOrder = 5
-  end
-  object Button1: TButton
-    Left = 232
-    Top = 72
-    Width = 75
-    Height = 25
-    Caption = #206#225#237#238#226#232#242#252
-    TabOrder = 6
+    OnClick = RadioButton2Click
   end
   object DBGrid1: TDBGrid
     Left = 9
@@ -106,7 +100,7 @@ object Form4: TForm4
     Width = 296
     Height = 217
     DataSource = DataSource1
-    TabOrder = 7
+    TabOrder = 6
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
