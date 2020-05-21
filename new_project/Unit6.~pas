@@ -1,0 +1,47 @@
+unit Unit6;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, IniFiles, StdCtrls, Grids, DBGrids, DB, IBDatabase,
+  IBCustomDataSet, IBQuery;
+
+type
+  TForm6 = class(TForm)
+    IBDatabase1: TIBDatabase;
+    IBQuery1: TIBQuery;
+    IBTransaction1: TIBTransaction;
+    DataSource1: TDataSource;
+    IBQuery2: TIBQuery;
+    IBTransaction2: TIBTransaction;
+    IBQuery3: TIBQuery;
+    IBTransaction3: TIBTransaction;
+    DBGrid1: TDBGrid;
+    Label5: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label10: TLabel;
+    Label9: TLabel;
+    ComboBox4: TComboBox;
+    ComboBox5: TComboBox;
+    ComboBox6: TComboBox;
+    ComboBox7: TComboBox;
+    ComboBox8: TComboBox;
+    Button5: TButton;
+    Button6: TButton;
+    Label1: TLabel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form6: TForm6;
+
+implementation
+
+{$R *.dfm}
+
+end.

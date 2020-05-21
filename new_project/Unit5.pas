@@ -50,6 +50,8 @@ type
     procedure RadioButton2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure N1Click(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure FormActivate(Sender: TObject);
   private
     FNew: boolean;
     CheckFirstTable: String;
@@ -75,13 +77,14 @@ var
 
 implementation
 
+uses Unit3;
+
 {$R *.dfm}
 
 
 
 
 procedure TForm5.FormCreate(Sender: TObject);
-
 var
   FIniFile: TIniFile;
 begin
@@ -114,7 +117,7 @@ end;
 
 
 
-procedure TForm5.Button7Click(Sender: TObject);
+procedure TForm5.Button7Click(Sender: TObject);  //save
 begin
   //insert id from table
  with IBQuery3 do //find first field id
@@ -320,6 +323,27 @@ begin
     inc := inc + 1;
     end;
     wdAD.ActiveWindow.View.ShowAll := false;
+end;
+
+procedure TForm5.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+begin
+  IBQuery1.Close;
+  IBDatabase1.Connected := false;
+  Form5.Hide;
+  Form3.Show;
+end;
+
+procedure TForm5.FormActivate(Sender: TObject);
+begin
+  with IBQuery1 do
+   begin
+    SQL.Text := 'select report.id as "Номер", line_item.info as "Статья затрат", depart.name as "Имя отдела", report.ryear as "Год", report.rmonth as "Месяц", report_content.info as "Информация", report_content.report_sum as "Сумма"' +
+ 'from report_content, report, line_item, depart ' +
+'where (report.id = report_content.report_id) and ' +
+      '(line_item.id = report_content.line_item_id) and ' +
+      '(report.depart_id = depart.id) order by report.id';
+    Open;
+   end;
 end;
 
 end.

@@ -15,7 +15,6 @@ type
     Edit1: TEdit;
     RadioButton1: TRadioButton;
     RadioButton2: TRadioButton;
-    Button1: TButton;
     DBGrid1: TDBGrid;
     MainMenu1: TMainMenu;
     Rf1: TMenuItem;
@@ -39,6 +38,9 @@ type
     procedure Button4Click(Sender: TObject);
     procedure Line1Click(Sender: TObject);
     procedure Depart1Click(Sender: TObject);
+    procedure Edit1DblClick(Sender: TObject);
+    procedure RadioButton1Click(Sender: TObject);
+    procedure RadioButton2Click(Sender: TObject);
   private
     FNew: Boolean;
     CheckFirstTable: String;
@@ -72,6 +74,7 @@ begin
   ExecuteProcedure := 'proc_depart';
   Select := 'name';
   FNew := true;
+  Form4.Caption := 'Состав отделов';
   try
     FIniFile := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'Config.ini');
     try
@@ -82,7 +85,7 @@ begin
    IBDatabase1.Connected := true;
    with IBQuery1 do
    begin
-    SQL.Text := 'select id , name as "Имя отдела" from '+ CheckFirstTable +' order by id';  //depart line_item
+    SQL.Text := 'select id as "Номер", name as "Имя отдела" from '+ CheckFirstTable +' order by id';  //depart line_item
     Open;
    end;
   except
@@ -112,7 +115,7 @@ begin
       SQL.Text :=
       'execute procedure '+ ExecuteProcedure +'(-1, ''' +  Edit1.Text + ''')'
     else
-      SQL.Text := 'execute procedure '+ ExecuteProcedure +'(' +IBQuery1.FieldByName('ID').AsString + ', ''' +  Edit1.Text + ''')';
+      SQL.Text := 'execute procedure '+ ExecuteProcedure +'(' +IBQuery1.FieldByName('Номер').AsString + ', ''' +  Edit1.Text + ''')';
     Transaction.StartTransaction;
     ExecSQL;
     Transaction.Commit;
@@ -134,10 +137,11 @@ procedure TForm4.Line1Click(Sender: TObject);
 begin
   Label2.Caption := 'Изменение  статей  затрат';
   CheckFirstTable := 'line_item';
+  Form4.Caption := 'Статья затрат';
 
   with IBQuery1 do
    begin
-    SQL.Text := 'select id , info as "Статья расходов" from '+ CheckFirstTable +' order by id';  //depart line_item
+    SQL.Text := 'select id as "Номер", info as "Статья расходов" from '+ CheckFirstTable +' order by id';  //depart line_item
     Open;
    end;
 
@@ -146,14 +150,32 @@ end;
 procedure TForm4.Depart1Click(Sender: TObject);
 begin
     Label2.Caption := 'Изменение состава отделов';
-    CheckFirstTable := 'depart'
+    CheckFirstTable := 'depart';
+      Form4.Caption := 'Состав отделов';
 
     with IBQuery1 do
    begin
-    SQL.Text := 'select id , name as "Имя отдела" from '+ CheckFirstTable +' order by id';  //depart
+    SQL.Text := 'select id as "Номер", name as "Имя отдела" from '+ CheckFirstTable +' order by id';  //depart
     Open;
    end;
 
+end;
+
+procedure TForm4.Edit1DblClick(Sender: TObject);
+begin
+    Edit1.Text := DBGrid1.columns[1].Field.asString;
+end;
+
+procedure TForm4.RadioButton1Click(Sender: TObject);
+begin
+  FNew := true;
+  RadioButton2.Checked := false;
+end;
+
+procedure TForm4.RadioButton2Click(Sender: TObject);
+begin
+  FNew := false;
+  RadioButton1.Checked := false;
 end;
 
 end.

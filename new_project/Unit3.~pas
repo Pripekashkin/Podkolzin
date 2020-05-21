@@ -13,9 +13,8 @@ type
     Button1: TButton;
     Button2: TButton;
     Button3: TButton;
-    Button4: TButton;
     procedure Button1Click(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
   private
     FNew: Boolean;
     CheckFirstTable: String;
@@ -41,7 +40,7 @@ var
 
 implementation
 
-uses Unit4;
+uses Unit4, Unit5;
 
 {$R *.dfm}
 
@@ -53,5 +52,11 @@ Form3.Visible := false;
 Form4.Visible := true;
 end;
 
+
+procedure TForm3.Button2Click(Sender: TObject);
+begin
+  Form3.Hide;
+  Form5.Show;
+end;
 
 end.

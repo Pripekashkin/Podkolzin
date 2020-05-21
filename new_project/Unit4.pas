@@ -31,8 +31,8 @@ type
     IBTransaction2: TIBTransaction;
     IBQuery3: TIBQuery;
     IBTransaction3: TIBTransaction;
-    Label1: TLabel;
     Label2: TLabel;
+    Label7: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure Button4Click(Sender: TObject);
@@ -41,6 +41,8 @@ type
     procedure Edit1DblClick(Sender: TObject);
     procedure RadioButton1Click(Sender: TObject);
     procedure RadioButton2Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
   private
     FNew: Boolean;
     CheckFirstTable: String;
@@ -64,6 +66,8 @@ var
   Form4: TForm4;
 
 implementation
+
+uses Unit3;
 
 {$R *.dfm}
 procedure TForm4.FormCreate(Sender: TObject);
@@ -102,8 +106,11 @@ begin
 
 procedure TForm4.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
-    IBQuery1.Close;
+  IBQuery1.Close;
+  CheckFirstTable := 'depart';
   IBDatabase1.Connected := false;
+  Form4.Hide;
+  Form3.Show;
 end;
 
 procedure TForm4.Button4Click(Sender: TObject); //apply form
@@ -137,7 +144,8 @@ procedure TForm4.Line1Click(Sender: TObject);
 begin
   Label2.Caption := 'Изменение  статей  затрат';
   CheckFirstTable := 'line_item';
-  Form4.Caption := 'Статья затрат';
+  Form4.Caption := 'Статьи затрат';
+  ExecuteProcedure := 'proc_line';
 
   with IBQuery1 do
    begin
@@ -152,6 +160,7 @@ begin
     Label2.Caption := 'Изменение состава отделов';
     CheckFirstTable := 'depart';
       Form4.Caption := 'Состав отделов';
+      ExecuteProcedure := 'proc_depart';
 
     with IBQuery1 do
    begin
@@ -176,6 +185,38 @@ procedure TForm4.RadioButton2Click(Sender: TObject);
 begin
   FNew := false;
   RadioButton1.Checked := false;
+end;
+
+procedure TForm4.Button3Click(Sender: TObject);
+begin
+  try
+   with IBQuery2 do
+   begin
+      SQL.Text := 'delete from '+ CheckFirstTable +' where id = ' +IBQuery1.FieldByName('Номер').AsString;
+    Transaction.StartTransaction;
+    ExecSQL;
+    Transaction.Commit;
+    Transaction.Active := false;
+    end;
+      IBQuery1.Close;
+      IBQuery1.Open;
+  except
+   on E: Exception do
+  begin
+      if  IBQuery2.Active then
+        IBQuery2.Transaction.Rollback;
+      Application.MessageBox(Pchar(E.Message), 'Error', MB_ICONERROR);
+   end;
+  end;
+end;
+
+procedure TForm4.FormActivate(Sender: TObject);
+begin
+   with IBQuery1 do
+   begin
+    SQL.Text := 'select id as "Номер", name as "Имя отдела" from '+ CheckFirstTable +' order by id';  //depart line_item
+    Open;
+   end;
 end;
 
 end.

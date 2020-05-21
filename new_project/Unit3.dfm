@@ -1,8 +1,8 @@
 object Form3: TForm3
-  Left = 568
-  Top = 216
-  Width = 483
-  Height = 278
+  Left = -1116
+  Top = 128
+  Width = 471
+  Height = 224
   Caption = 'Main menu'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -33,10 +33,11 @@ object Form3: TForm3
   end
   object Button3: TButton
     Left = 48
-    Top = 184
+    Top = 128
     Width = 353
     Height = 33
-    Caption = 'Make year plan'
+    Caption = #199#224#228#224#242#252' '#227#238#228#238#226#238#233' '#239#235#224#237
     TabOrder = 2
+    OnClick = Button3Click
   end
 end

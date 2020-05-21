@@ -1,8 +1,8 @@
 object Form5: TForm5
-  Left = 523
-  Top = 145
-  Width = 1392
-  Height = 822
+  Left = -1808
+  Top = 211
+  Width = 989
+  Height = 563
   Caption = 'Form5'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -122,7 +122,7 @@ object Form5: TForm5
   object ToolBar1: TToolBar
     Left = 0
     Top = 0
-    Width = 1376
+    Width = 973
     Height = 29
     Caption = 'ToolBar1'
     TabOrder = 0
@@ -134,7 +134,7 @@ object Form5: TForm5
     Height = 21
     ItemHeight = 13
     TabOrder = 1
-    Text = 'ComboBox1'
+    OnDblClick = ComboBox1DblClick
   end
   object ComboBox2: TComboBox
     Left = 208
@@ -143,7 +143,7 @@ object Form5: TForm5
     Height = 21
     ItemHeight = 13
     TabOrder = 2
-    Text = 'ComboBox2'
+    OnDblClick = ComboBox2DblClick
   end
   object ComboBox3: TComboBox
     Left = 208
@@ -152,7 +152,6 @@ object Form5: TForm5
     Height = 21
     ItemHeight = 13
     TabOrder = 3
-    Text = 'ComboBox3'
     Items.Strings = (
       '2019'
       '2020'
@@ -167,7 +166,6 @@ object Form5: TForm5
     Height = 21
     ItemHeight = 13
     TabOrder = 4
-    Text = 'ComboBox4'
     Items.Strings = (
       '1'
       '2'
@@ -188,7 +186,6 @@ object Form5: TForm5
     Width = 145
     Height = 21
     TabOrder = 5
-    Text = 'Edit2'
   end
   object Edit3: TEdit
     Left = 208
@@ -196,47 +193,15 @@ object Form5: TForm5
     Width = 145
     Height = 21
     TabOrder = 6
-    Text = 'Edit3'
-  end
-  object Button2: TButton
-    Left = 376
-    Top = 80
-    Width = 113
-    Height = 25
-    Caption = 'Edit field'
-    TabOrder = 7
   end
   object Button7: TButton
     Left = 208
     Top = 216
     Width = 145
     Height = 25
-    Caption = 'Save'
-    TabOrder = 8
-  end
-  object Button8: TButton
-    Left = 408
-    Top = 176
-    Width = 75
-    Height = 25
-    Caption = 'Delete'
-    TabOrder = 9
-  end
-  object Button6: TButton
-    Left = 496
-    Top = 232
-    Width = 129
-    Height = 25
-    Caption = 'Export'
-    TabOrder = 10
-  end
-  object Button5: TButton
-    Left = 376
-    Top = 48
-    Width = 113
-    Height = 25
-    Caption = 'Refresh'
-    TabOrder = 11
+    Caption = #207#240#232#236#229#237#232#242#252
+    TabOrder = 7
+    OnClick = Button7Click
   end
   object RadioButton1: TRadioButton
     Left = 0
@@ -245,8 +210,9 @@ object Form5: TForm5
     Height = 17
     Caption = #196#238#225#224#226#232#242#252
     Checked = True
-    TabOrder = 12
+    TabOrder = 8
     TabStop = True
+    OnClick = RadioButton1Click
   end
   object RadioButton2: TRadioButton
     Left = 0
@@ -254,7 +220,8 @@ object Form5: TForm5
     Width = 90
     Height = 17
     Caption = #208#229#228#224#234#242#232#240#238#226#224#242#252
-    TabOrder = 13
+    TabOrder = 9
+    OnClick = RadioButton2Click
   end
   object Button3: TButton
     Left = 8
@@ -262,7 +229,8 @@ object Form5: TForm5
     Width = 75
     Height = 25
     Caption = #211#228#224#235#232#242#252
-    TabOrder = 14
+    TabOrder = 10
+    OnClick = Button3Click
   end
   object DBGrid1: TDBGrid
     Left = 16
@@ -270,7 +238,7 @@ object Form5: TForm5
     Width = 945
     Height = 217
     DataSource = DataSource1
-    TabOrder = 15
+    TabOrder = 11
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
@@ -282,6 +250,7 @@ object Form5: TForm5
     Top = 528
     object N1: TMenuItem
       Caption = #221#234#241#239#238#240#242
+      OnClick = N1Click
     end
   end
   object ActionList1: TActionList
