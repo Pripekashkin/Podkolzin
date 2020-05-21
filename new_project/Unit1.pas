@@ -317,7 +317,7 @@ begin
     //ComboBox4.Text :=  DBGrid1.columns[4].Field.asString;
     Edit2.Text := DBGrid1.columns[5].Field.asString;
     Edit3.Text := DBGrid1.columns[6].Field.asString;
-    
+
 end;
 
 procedure TForm1.Button5Click(Sender: TObject);

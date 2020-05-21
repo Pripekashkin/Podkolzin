@@ -16,14 +16,7 @@ type
     Button3: TButton;
     Button1: TButton;
     Button4: TButton;
-    IBDatabase1: TIBDatabase;
-    IBQuery1: TIBQuery;
-    IBTransaction1: TIBTransaction;
     DataSource1: TDataSource;
-    IBQuery2: TIBQuery;
-    IBTransaction2: TIBTransaction;
-    IBQuery3: TIBQuery;
-    IBTransaction3: TIBTransaction;
     ComboBox1: TComboBox;
     ComboBox2: TComboBox;
     ComboBox3: TComboBox;
@@ -54,6 +47,13 @@ type
     Button6: TButton;
     DataSource2: TDataSource;
     Button7: TButton;
+    IBDatabase1: TIBDatabase;
+    IBQuery1: TIBQuery;
+    IBTransaction1: TIBTransaction;
+    IBQuery2: TIBQuery;
+    IBTransaction2: TIBTransaction;
+    IBQuery3: TIBQuery;
+    IBTransaction3: TIBTransaction;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormCreate(Sender: TObject);
     procedure RadioButton1Click(Sender: TObject);
@@ -311,7 +311,7 @@ ComboBox8.Visible := true;
 Button5.Visible := true;
     with IBQuery1 do
    begin
-    SQL.Text := 'select * from test where id = -1';
+    SQL.Text := 'select id as "—ÛÏÏ‡" from test where id = -1';
     Open;
    end;
 
