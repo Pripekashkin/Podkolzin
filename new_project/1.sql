@@ -1,0 +1,40 @@
+SET NAMES WIN1251;
+connect 'localhost:D:\delphi\new_project\DB02.fdb'
+USER 'SYSDBA' PASSWORD 'masterkey'
+
+CREATE TABLE DEPART (
+    ID    INTEGER NOT NULL,
+    NAME  VARCHAR(30)
+);
+
+CREATE TABLE LINE_ITEM (
+    ID    INTEGER NOT NULL,
+    INFO  VARCHAR(30)
+);
+
+CREATE TABLE REPORT (
+    ID         INTEGER NOT NULL,
+    RYEAR      INTEGER,
+    RMONTH     INTEGER,
+    DEPART_ID  INTEGER
+);
+
+CREATE TABLE REPORT_CONTENT (
+    ID            INTEGER NOT NULL,
+    REPORT_ID     INTEGER,
+    LINE_ITEM_ID  INTEGER,
+    INFO          VARCHAR(30),
+    REPORT_SUM    DECIMAL(15,2)
+);
+
+
+CREATE TABLE YEAR_PLAN (
+    ID            INTEGER NOT NULL,
+    DEPART_ID     INTEGER,
+    LINE_ITEM_ID  INTEGER,
+    PYEAR         INTEGER,
+    PSUM          DECIMAL(15,2)
+);
+
+commit work;
+

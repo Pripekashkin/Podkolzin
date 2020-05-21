@@ -311,7 +311,7 @@ ComboBox8.Visible := true;
 Button5.Visible := true;
     with IBQuery1 do
    begin
-    SQL.Text := 'select * from test where id = -1';
+    SQL.Text := 'select id as "Сумма" from test where id = -1';
     Open;
    end;
 

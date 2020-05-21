@@ -13,9 +13,11 @@ type
     Button1: TButton;
     Button2: TButton;
     Button3: TButton;
+    Button4: TButton;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
   private
     FNew: Boolean;
     CheckFirstTable: String;
@@ -41,7 +43,7 @@ var
 
 implementation
 
-uses Unit4, Unit5, Unit7;
+uses Unit4, Unit5, Unit7, Unit6;
 
 {$R *.dfm}
 
@@ -64,6 +66,12 @@ procedure TForm3.Button3Click(Sender: TObject);
 begin
 Form3.Hide;
 Form7.Show;
+end;
+
+procedure TForm3.Button4Click(Sender: TObject);
+begin
+  Form3.Hide;
+  Form6.Show;
 end;
 
 end.

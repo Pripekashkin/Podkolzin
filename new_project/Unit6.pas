@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, IniFiles, StdCtrls, Grids, DBGrids, DB, IBDatabase,
-  IBCustomDataSet, IBQuery, IniFiles;
+  IBCustomDataSet, IBQuery;
 
 type
   TForm6 = class(TForm)
@@ -28,15 +28,15 @@ type
     ComboBox6: TComboBox;
     ComboBox7: TComboBox;
     ComboBox8: TComboBox;
-    Button5: TButton;
     Button6: TButton;
     Label1: TLabel;
     procedure FormActivate(Sender: TObject);
     procedure ComboBox4DblClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure Button6Click(Sender: TObject);
   private
-    { Private declarations }
+    LineToId: Integer;
   public
     { Public declarations }
   end;
@@ -72,6 +72,8 @@ begin
 end;
 
 procedure TForm6.FormCreate(Sender: TObject);
+ var
+ FIniFile: TIniFile;
 begin
   try
     FIniFile := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'Config.ini');
@@ -102,6 +104,36 @@ begin
   IBDatabase1.Connected := false;
   Form6.Hide;
   Form3.Show;
+end;
+
+procedure TForm6.Button6Click(Sender: TObject);
+begin
+  with IBQuery3 do //find first field id
+  begin
+    SQL.Text := 'select id from line_item where '''+ComboBox4.Items[ComboBox4.ItemIndex]+''' = info';
+    Open;
+    IBQuery3.First;
+    while not IBQuery3.Eof do
+    begin
+      LineToId := IBQuery3['id'];  // here id of current line
+      IBQuery3.Next;
+    end;
+   IBQuery3.Close;
+  end;
+
+  with IBQuery1 do
+   begin
+    // SQL.Text := 'select SUM(Report_sum) from report_content where (LINE_ITEM_ID ='+IntToStr(LineToId)+')';
+     SQL.Text := 'select SUM(report_content.Report_sum) as "Сумма затрат" from report_content, report where ' +
+'(LINE_ITEM_ID = '+IntToStr(LineToId)+') and ' +
+'(report_content.report_id = report.id) and ' +
+'(ryear >= '''+ComboBox6.Items[ComboBox6.ItemIndex]+''') and ' +
+'(ryear <= '''+ComboBox8.Items[ComboBox8.ItemIndex]+''') and ' +
+'(rmonth >= '''+ComboBox5.Items[ComboBox5.ItemIndex]+''') and ' +
+'(rmonth <= '''+ComboBox7.Items[ComboBox7.ItemIndex]+''')';
+    Open;
+    DBGrid1.Visible := true;
+   end;
 end;
 
 end.

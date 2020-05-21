@@ -1,9 +1,9 @@
 object Form7: TForm7
-  Left = -966
-  Top = 224
-  Width = 950
-  Height = 736
-  Caption = 'Form7'
+  Left = -938
+  Top = 572
+  Width = 691
+  Height = 474
+  Caption = #1043#1086#1076#1086#1074#1086#1081' '#1087#1083#1072#1085
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,17 +12,18 @@ object Form7: TForm7
   Font.Style = []
   Menu = MainMenu1
   OldCreateOrder = False
+  Position = poMainFormCenter
   OnActivate = FormActivate
   OnClose = FormClose
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
-    Left = 160
+    Left = 176
     Top = 40
     Width = 94
     Height = 16
-    Caption = #209#242#224#242#252#255' '#231#224#242#240#224#242
+    Caption = #1057#1090#1072#1090#1100#1103' '#1079#1072#1090#1088#1072#1090
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -33,9 +34,9 @@ object Form7: TForm7
   object Label2: TLabel
     Left = 184
     Top = 64
-    Width = 41
+    Width = 88
     Height = 16
-    Caption = #206#242#228#229#235
+    Caption = #1044#1077#1087#1072#1088#1090#1072#1084#1077#1085#1090
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -44,11 +45,11 @@ object Form7: TForm7
     ParentFont = False
   end
   object Label3: TLabel
-    Left = 192
+    Left = 248
     Top = 88
     Width = 23
     Height = 16
-    Caption = #195#238#228
+    Caption = #1043#1086#1076
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -57,11 +58,11 @@ object Form7: TForm7
     ParentFont = False
   end
   object Label6: TLabel
-    Left = 184
+    Left = 224
     Top = 112
     Width = 43
     Height = 16
-    Caption = #209#243#236#236#224
+    Caption = #1057#1091#1084#1084#1072
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -74,7 +75,7 @@ object Form7: TForm7
     Top = 40
     Width = 59
     Height = 13
-    Caption = #196#229#233#241#242#226#232#229
+    Caption = #1044#1077#1081#1089#1090#1074#1080#1077
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -83,11 +84,11 @@ object Form7: TForm7
     ParentFont = False
   end
   object Label9: TLabel
-    Left = 48
+    Left = 216
     Top = 8
-    Width = 248
+    Width = 218
     Height = 20
-    Caption = #212#238#240#236#232#240#238#226#224#237#232#229' '#227#238#228#238#226#238#227#238' '#238#242#247#184#242#224
+    Caption = #1044#1086#1073#1072#1074#1083#1077#1085#1080#1077' '#1075#1086#1076#1086#1074#1086#1075#1086' '#1087#1083#1072#1085#1072
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -16
@@ -95,19 +96,12 @@ object Form7: TForm7
     Font.Style = []
     ParentFont = False
   end
-  object Label4: TLabel
-    Left = 192
-    Top = 192
-    Width = 32
-    Height = 13
-    Caption = 'Label4'
-  end
   object Button4: TButton
     Left = 280
     Top = 144
     Width = 121
     Height = 25
-    Caption = #209#238#245#240#224#237#232#242#252
+    Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
     TabOrder = 0
     OnClick = Button4Click
   end
@@ -155,7 +149,7 @@ object Form7: TForm7
     Top = 64
     Width = 90
     Height = 17
-    Caption = #196#238#225#224#226#232#242#252
+    Caption = #1044#1086#1073#1072#1074#1080#1090#1100
     Checked = True
     TabOrder = 5
     TabStop = True
@@ -166,7 +160,7 @@ object Form7: TForm7
     Top = 88
     Width = 90
     Height = 17
-    Caption = #208#229#228#224#234#242#232#240#238#226#224#242#252
+    Caption = #1048#1079#1084#1077#1085#1080#1090#1100
     TabOrder = 6
     OnClick = RadioButton2Click
   end
@@ -175,21 +169,22 @@ object Form7: TForm7
     Top = 128
     Width = 75
     Height = 25
-    Caption = #211#228#224#235#232#242#252
+    Caption = #1059#1076#1072#1083#1080#1090#1100
     TabOrder = 7
+    OnClick = Button3Click
   end
   object ToolBar1: TToolBar
     Left = 0
     Top = 0
-    Width = 934
+    Width = 675
     Height = 1
     Caption = 'ToolBar1'
     TabOrder = 8
   end
   object DBGrid1: TDBGrid
     Left = 5
-    Top = 224
-    Width = 916
+    Top = 192
+    Width = 668
     Height = 217
     DataSource = DataSource1
     TabOrder = 9
@@ -203,7 +198,8 @@ object Form7: TForm7
     Left = 104
     Top = 528
     object N1: TMenuItem
-      Caption = #221#234#241#239#238#240#242
+      Caption = #1069#1082#1089#1087#1086#1088#1090
+      OnClick = N1Click
     end
   end
   object ActionList1: TActionList
@@ -220,7 +216,8 @@ object Form7: TForm7
   object IBDatabase1: TIBDatabase
     Params.Strings = (
       'user_name=sysdba'
-      'password=masterkey')
+      'password=masterkey'
+      'lc_ctype=WIN1251')
     LoginPrompt = False
     IdleTimer = 0
     SQLDialect = 3

@@ -1,9 +1,9 @@
 object Form6: TForm6
-  Left = -1675
-  Top = 490
-  Width = 419
-  Height = 477
-  Caption = 'Form6'
+  Left = -976
+  Top = 226
+  Width = 270
+  Height = 281
+  Caption = #1057#1091#1084#1084#1072
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,43 +11,44 @@ object Form6: TForm6
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  Position = poMainFormCenter
   OnActivate = FormActivate
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Label5: TLabel
-    Left = 160
+    Left = 104
     Top = 48
-    Width = 9
+    Width = 11
     Height = 16
-    Caption = #209
+    Caption = #1057
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
     Font.Name = 'MS Sans Serif'
-    Font.Style = []
+    Font.Style = [fsBold]
     ParentFont = False
   end
   object Label7: TLabel
-    Left = 248
+    Left = 176
     Top = 48
-    Width = 18
+    Width = 21
     Height = 16
-    Caption = #207#238
+    Caption = #1055#1086
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
     Font.Name = 'MS Sans Serif'
-    Font.Style = []
+    Font.Style = [fsBold]
     ParentFont = False
   end
   object Label8: TLabel
-    Left = 96
+    Left = 24
     Top = 96
     Width = 23
     Height = 16
-    Caption = #195#238#228
+    Caption = #1043#1086#1076
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -56,11 +57,11 @@ object Form6: TForm6
     ParentFont = False
   end
   object Label10: TLabel
-    Left = 88
+    Left = 16
     Top = 72
     Width = 41
     Height = 16
-    Caption = #204#229#241#255#246
+    Caption = #1052#1077#1089#1103#1094
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -70,10 +71,10 @@ object Form6: TForm6
   end
   object Label9: TLabel
     Left = 16
-    Top = 128
-    Width = 116
+    Top = 120
+    Width = 45
     Height = 16
-    Caption = #209#242#224#242#252#241#255' '#240#224#241#245#238#228#238#226
+    Caption = #1057#1090#1072#1090#1100#1103
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -82,23 +83,23 @@ object Form6: TForm6
     ParentFont = False
   end
   object Label1: TLabel
-    Left = 72
-    Top = 8
-    Width = 258
-    Height = 20
-    Caption = #209#244#238#240#236#232#240#238#226#224#242#252' '#238#242#247#184#242' '#239#238' '#226#240#229#236#229#237#232
+    Left = 24
+    Top = 16
+    Width = 227
+    Height = 16
+    Caption = #1054#1090#1095#1105#1090' '#1087#1086' '#1074#1088#1077#1084#1077#1085#1085#1086#1084#1091' '#1087#1088#1086#1084#1077#1078#1091#1090#1082#1091
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -16
+    Font.Height = -13
     Font.Name = 'MS Sans Serif'
     Font.Style = []
     ParentFont = False
   end
   object DBGrid1: TDBGrid
-    Left = 8
-    Top = 216
-    Width = 385
-    Height = 217
+    Left = 16
+    Top = 176
+    Width = 225
+    Height = 49
     DataSource = DataSource1
     TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
@@ -108,16 +109,16 @@ object Form6: TForm6
     TitleFont.Style = []
   end
   object ComboBox4: TComboBox
-    Left = 136
-    Top = 128
-    Width = 161
+    Left = 80
+    Top = 120
+    Width = 145
     Height = 21
     ItemHeight = 13
     TabOrder = 1
     OnDblClick = ComboBox4DblClick
   end
   object ComboBox5: TComboBox
-    Left = 136
+    Left = 80
     Top = 72
     Width = 73
     Height = 21
@@ -138,7 +139,7 @@ object Form6: TForm6
       '12')
   end
   object ComboBox6: TComboBox
-    Left = 136
+    Left = 80
     Top = 96
     Width = 73
     Height = 21
@@ -152,7 +153,7 @@ object Form6: TForm6
       '2023')
   end
   object ComboBox7: TComboBox
-    Left = 224
+    Left = 152
     Top = 72
     Width = 73
     Height = 21
@@ -173,7 +174,7 @@ object Form6: TForm6
       '12')
   end
   object ComboBox8: TComboBox
-    Left = 224
+    Left = 152
     Top = 96
     Width = 73
     Height = 21
@@ -186,26 +187,20 @@ object Form6: TForm6
       '2022'
       '2023')
   end
-  object Button5: TButton
-    Left = 312
-    Top = 120
-    Width = 75
-    Height = 25
-    Caption = #206#225#237#238#226#232#242#252
-    TabOrder = 6
-  end
   object Button6: TButton
-    Left = 104
-    Top = 168
-    Width = 209
+    Left = 80
+    Top = 144
+    Width = 145
     Height = 25
-    Caption = #194#251#226#229#241#242#232
-    TabOrder = 7
+    Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
+    TabOrder = 6
+    OnClick = Button6Click
   end
   object IBDatabase1: TIBDatabase
     Params.Strings = (
       'user_name=sysdba'
-      'password=masterkey')
+      'password=masterkey'
+      'lc_ctype=WIN1251')
     LoginPrompt = False
     IdleTimer = 0
     SQLDialect = 3

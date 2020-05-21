@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Menus, IBDatabase, DB, IBCustomDataSet, IBQuery, ImgList,
-  ActnList, Grids, DBGrids, ToolWin, ComCtrls, StdCtrls, IniFiles;
+  ActnList, Grids, DBGrids, ToolWin, ComCtrls, StdCtrls, IniFiles, comobj, wordxp;
 
 type
   TForm7 = class(TForm)
@@ -38,7 +38,6 @@ type
     IBTransaction2: TIBTransaction;
     IBQuery3: TIBQuery;
     IBTransaction3: TIBTransaction;
-    Label4: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure RadioButton1Click(Sender: TObject);
@@ -47,6 +46,8 @@ type
     procedure ComboBox2DblClick(Sender: TObject);
     procedure ComboBox1DblClick(Sender: TObject);
     procedure Button4Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure N1Click(Sender: TObject);
   private
     FNew: Boolean;
     LineToId: Integer;
@@ -195,7 +196,7 @@ begin
    with IBQuery2 do
    begin
     if FNew then begin
-    Label4.Caption := 'execute procedure proc_year(-1,'''+IntToStr(LineToId)+''', '''+IntToStr(DepartToId)+''', '''+ComboBox3.Items[ComboBox3.ItemIndex]+''', '+Edit1.Text+')' ;
+    //Label4.Caption := 'execute procedure proc_year(-1,'''+IntToStr(LineToId)+''', '''+IntToStr(DepartToId)+''', '''+ComboBox3.Items[ComboBox3.ItemIndex]+''', '+Edit1.Text+')' ;
       SQL.Text :=
       'execute procedure proc_year(-1,'''+IntToStr(LineToId)+''', '''+IntToStr(DepartToId)+''', '''+ComboBox3.Items[ComboBox3.ItemIndex]+''', '+Edit1.Text+')'
     end
@@ -218,4 +219,87 @@ begin
    end;
   end;
   end;
+
+procedure TForm7.Button3Click(Sender: TObject);
+begin
+  try
+   with IBQuery2 do
+   begin
+      SQL.Text := 'delete from year_plan where id = ' +IBQuery1.FieldByName('Номер').AsString;
+      //Label4.Caption := 'delete from year_plan where id = ' +IBQuery1.FieldByName('Номер').AsString;
+    Transaction.StartTransaction;
+    ExecSQL;
+    Transaction.Commit;
+    Transaction.Active := false;
+    end;
+    IBQuery1.Close;
+    IBQuery1.Open;
+  except
+   on E: Exception do
+  begin
+      if  IBQuery2.Active then
+        IBQuery2.Transaction.Rollback;
+      Application.MessageBox(Pchar(E.Message), 'Error', MB_ICONERROR);
+   end;
+  end;
+end;
+
+procedure TForm7.N1Click(Sender: TObject);
+  var
+MS_Excel, xlsAD: variant;
+i: integer;
+begin
+  inc := 1;
+  ExcelI := 1;
+  with IBQuery3 do //find first field id
+  begin
+    SQL.Text := 'select depart.name,  line_item.info, year_plan.pyear, year_plan.psum '+
+'from year_plan, depart, line_item '+
+'where (year_plan.depart_id = depart.id) and '+
+'(year_plan.line_item_id = line_item.id)';
+    Open;
+    IBQuery3.First;
+    while not IBQuery3.Eof do
+    begin
+     Depart[ExcelI] := IBQuery3['name'];  // here id of current line
+     Line[ExcelI] := IBQuery3['info'];
+     Year[ExcelI] := IBQuery3['pyear'];
+     Sum[ExcelI] := IBQuery3['psum'];
+     ExcelI := ExcelI + 1;
+     IBQuery3.Next;
+    end;
+   IBQuery3.Close;
+  end;
+
+  MS_Excel := CreateOleObject('Excel.Application');
+  MS_Excel.Visible := true;
+  MS_Excel.Workbooks.Add;
+  MS_Excel.Workbooks[1].WorkSheets[1].Name := 'line_item';
+  xlsAD := MS_Excel.Workbooks[1].WorkSheets[1].Columns;
+  //size
+  xlsAD.Columns[1].ColumnWidth:=20;
+  xlsAD.Columns[2].ColumnWidth:=20;
+  xlsAD.Columns[3].ColumnWidth:=10;
+  //bold
+  xlsAD := MS_Excel.Workbooks[1].WorkSheets['line_item'].Rows;
+  xlsAD.Rows[1].Font.Bold := true;
+  //name
+  xlsAD := MS_Excel.Workbooks[1].WorkSheets[1];
+  xlsAD.Cells[1,1] := 'Отдел';
+  xlsAD.Cells[1,2] := 'Статья Затрат';
+  xlsAD.Cells[1,3] := 'Год';
+  xlsAD.Cells[1,4] := 'Сумма';
+
+
+  for i := 2 to ExcelI do
+  begin
+  xlsAD.Cells[i,1] := Depart[inc];
+  xlsAD.Cells[i,2] := Line[inc];
+  xlsAD.Cells[i,3] := Year[inc];
+  xlsAD.Cells[i,4] := Sum[inc];
+  inc := inc + 1;
+  end;
+end;
+//end;
+
 end.

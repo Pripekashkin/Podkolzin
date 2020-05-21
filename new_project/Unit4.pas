@@ -118,9 +118,11 @@ begin
   try
    with IBQuery2 do
    begin
-    if FNew then
+    if FNew then begin
       SQL.Text :=
-      'execute procedure '+ ExecuteProcedure +'(-1, ''' +  Edit1.Text + ''')'
+      'execute procedure '+ ExecuteProcedure +'(-1, ''' +  Edit1.Text + ''')';
+     // Label1.Caption :=  'execute procedure '+ ExecuteProcedure +'(-1, ''' +  Edit1.Text + ''')';
+      end
     else
       SQL.Text := 'execute procedure '+ ExecuteProcedure +'(' +IBQuery1.FieldByName('Номер').AsString + ', ''' +  Edit1.Text + ''')';
     Transaction.StartTransaction;
