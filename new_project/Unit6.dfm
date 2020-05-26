@@ -1,8 +1,8 @@
 object Form6: TForm6
-  Left = -976
-  Top = 226
-  Width = 270
-  Height = 281
+  Left = -718
+  Top = 200
+  Width = 675
+  Height = 740
   Caption = #1057#1091#1084#1084#1072
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -96,11 +96,12 @@ object Form6: TForm6
     ParentFont = False
   end
   object DBGrid1: TDBGrid
-    Left = 16
-    Top = 176
+    Left = 360
+    Top = 592
     Width = 225
     Height = 49
     DataSource = DataSource1
+    Options = [dgEditing, dgTitles, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
     TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -195,6 +196,34 @@ object Form6: TForm6
     Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
     TabOrder = 6
     OnClick = Button6Click
+  end
+  object Edit1: TEdit
+    Left = 424
+    Top = 544
+    Width = 121
+    Height = 21
+    TabOrder = 7
+    Text = 'Edit1'
+  end
+  object Edit2: TEdit
+    Left = 424
+    Top = 568
+    Width = 121
+    Height = 21
+    TabOrder = 8
+    Text = 'Edit2'
+  end
+  object StringGrid1: TStringGrid
+    Left = 40
+    Top = 208
+    Width = 417
+    Height = 185
+    ColCount = 2
+    FixedCols = 0
+    TabOrder = 9
+    ColWidths = (
+      155
+      54)
   end
   object IBDatabase1: TIBDatabase
     Params.Strings = (
