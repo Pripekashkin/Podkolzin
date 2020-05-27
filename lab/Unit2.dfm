@@ -1,6 +1,6 @@
 object Form2: TForm2
-  Left = -778
-  Top = 538
+  Left = -827
+  Top = 223
   Width = 615
   Height = 368
   Caption = 'Form2'
@@ -127,6 +127,15 @@ object Form2: TForm2
     Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
     TabOrder = 7
     OnClick = Button1Click
+  end
+  object Button2: TButton
+    Left = 384
+    Top = 48
+    Width = 75
+    Height = 25
+    Caption = #1069#1082#1089#1087#1086#1088#1090
+    TabOrder = 8
+    OnClick = Button2Click
   end
   object IBDatabase1: TIBDatabase
     Params.Strings = (

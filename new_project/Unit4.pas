@@ -33,7 +33,6 @@ type
     IBTransaction3: TIBTransaction;
     Label2: TLabel;
     Label7: TLabel;
-    procedure FormCreate(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure Button4Click(Sender: TObject);
     procedure Line1Click(Sender: TObject);
@@ -70,40 +69,6 @@ implementation
 uses Unit3;
 
 {$R *.dfm}
-procedure TForm4.FormCreate(Sender: TObject);
-  var
-  FIniFile: TIniFile;
-begin
-  CheckFirstTable := 'depart';
-  ExecuteProcedure := 'proc_depart';
-  Select := 'name';
-  FNew := true;
-  Form4.Caption := 'Состав отделов';
-  try
-    FIniFile := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'Config.ini');
-    try
-      IBDatabase1.DatabaseName := FIniFile.ReadString('Base', 'Path', '');
-   finally
-     FIniFile.Free;
-   end;
-   IBDatabase1.Connected := true;
-   with IBQuery1 do
-   begin
-    SQL.Text := 'select id as "Номер", name as "Имя отдела" from '+ CheckFirstTable +' order by id';  //depart line_item
-    Open;
-   end;
-  except
-   on E: Exception do
-  begin
-      Application.MessageBox(Pchar(E.Message), 'error', MB_ICONERROR);
-      Halt;
-   end;
-  end;
-  end;
-
-
-
-
 procedure TForm4.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
   IBQuery1.Close;
@@ -213,7 +178,35 @@ begin
 end;
 
 procedure TForm4.FormActivate(Sender: TObject);
+  var
+  FIniFile: TIniFile;
 begin
+  CheckFirstTable := 'depart';
+  ExecuteProcedure := 'proc_depart';
+  Select := 'name';
+  FNew := true;
+  Form4.Caption := 'Состав отделов';
+  try
+    FIniFile := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'Config.ini');
+    try
+      IBDatabase1.DatabaseName := FIniFile.ReadString('Base', 'Path', '');
+   finally
+     FIniFile.Free;
+   end;
+   IBDatabase1.Connected := true;
+   with IBQuery1 do
+   begin
+    SQL.Text := 'select id as "Номер", name as "Имя отдела" from '+ CheckFirstTable +' order by id';  //depart line_item
+    Open;
+   end;
+  except
+   on E: Exception do
+  begin
+      Application.MessageBox(Pchar(E.Message), 'error', MB_ICONERROR);
+      Halt;
+   end;
+  end;
+
    with IBQuery1 do
    begin
     SQL.Text := 'select id as "Номер", name as "Имя отдела" from '+ CheckFirstTable +' order by id';  //depart line_item

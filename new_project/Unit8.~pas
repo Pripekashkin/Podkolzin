@@ -1,0 +1,121 @@
+unit Unit8;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Grids, DBGrids, DB, IBDatabase, IBCustomDataSet, IBQuery, IniFiles,
+  StdCtrls;
+
+type
+  TForm8 = class(TForm)
+    IBDatabase1: TIBDatabase;
+    IBQuery1: TIBQuery;
+    IBTransaction1: TIBTransaction;
+    DataSource1: TDataSource;
+    IBQuery2: TIBQuery;
+    IBTransaction2: TIBTransaction;
+    IBQuery3: TIBQuery;
+    IBTransaction3: TIBTransaction;
+    DBGrid1: TDBGrid;
+    DataSource2: TDataSource;
+    DBGrid2: TDBGrid;
+    Label1: TLabel;
+    Label2: TLabel;
+    procedure FormActivate(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure DBGrid1CellClick(Column: TColumn);
+  private
+    id: integer;
+    name1: string;
+  public
+    { Public declarations }
+  end;
+
+var
+  Form8: TForm8;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm8.FormActivate(Sender: TObject);
+var
+  FIniFile: TIniFile;
+begin
+  try
+    FIniFile := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'Config.ini');
+    try
+      IBDatabase1.DatabaseName := FIniFile.ReadString('Base', 'Path', '');
+   finally
+     FIniFile.Free;
+   end;
+   IBDatabase1.Connected := true;
+   with IBQuery1 do
+   begin
+    SQL.Text := 'SELECT REPORT.DEPART_ID as "Номер", SUM(REPORT_CONTENT.REPORT_SUM) as "Сумма", '+
+'MAX(DEPART.NAME) as "Имя" '+
+ 'FROM REPORT REPORT_CONTENT '+
+'JOIN REPORT_CONTENT RC ON REPORT.ID = REPORT_CONTENT.REPORT_ID '+
+'JOIN DEPART ON REPORT_CONTENT.report_ID = DEPART.ID '+
+'GROUP BY REPORT.DEPART_ID';
+
+   Open;
+   end;
+
+     with IBQuery2 do
+   begin
+   SQL.Text := 'select year_plan.id as "Номер", depart.name as "Имя отдела", line_item.info as "Информация", year_plan.psum as "Сумма"'+
+'from year_plan, depart, line_item '+
+'where (year_plan.depart_id = depart.id) and (year_plan.line_item_id = line_item.id) order by year_plan.id';
+
+   Open;
+   end;
+      
+  except
+   on E: Exception do
+  begin
+      Application.MessageBox(Pchar(E.Message), 'error', MB_ICONERROR);
+      Halt;
+   end;
+  end;
+end;
+
+procedure TForm8.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+begin
+  IBQuery1.Close;
+  IBDatabase1.Connected := false;
+end;
+
+procedure TForm8.DBGrid1CellClick(Column: TColumn);
+begin
+  name1 := IBQuery1['Имя'];
+ // label2.Caption := name;
+  with IBQuery2 do
+   begin
+   SQL.Text := 'select year_plan.id as "Номер", depart.name as "Имя отдела", line_item.info as "Информация", year_plan.psum as "Сумма"'+
+'from year_plan, depart, line_item '+
+'where (year_plan.depart_id = depart.id) and (year_plan.line_item_id = line_item.id) order by year_plan.id';
+   Open;
+end;
+
+   with IBQuery3 do //find first field id
+  begin
+    SQL.Text := 'select id from depart where name = ''''+name+''';
+   // label2.Caption := 'select id from depart where (name = '''+name1+''')';
+    Open;
+    IBQuery3.First;
+    while not IBQuery3.Eof do
+    begin
+     id := IBQuery3['id'];  // here id of current line
+      label2.Caption := IntToStr(id);
+      IBQuery3.Next;
+
+    end;
+   IBQuery3.Close;
+  end;
+  //label2.Caption := IntToStr(id);
+
+end;
+
+end.

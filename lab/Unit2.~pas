@@ -30,7 +30,7 @@ type
     Label3: TLabel;
     Label4: TLabel;
     Button1: TButton;
-    procedure FormCreate(Sender: TObject);
+    Button2: TButton;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure RadioButton1Click(Sender: TObject);
     procedure RadioButton2Click(Sender: TObject);
@@ -52,38 +52,10 @@ uses Unit1;
 
 {$R *.dfm}
 
-procedure TForm2.FormCreate(Sender: TObject);
- var
-  FIniFile: TIniFile;
-begin
-  FNew := true;
-  try
-    FIniFile := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'Config.ini');
-    try
-      IBDatabase1.DatabaseName := FIniFile.ReadString('Base', 'Path', '');
-   finally
-     FIniFile.Free;
-   end;
-   IBDatabase1.Connected := true;
-   with IBQuery1 do
-   begin
-    SQL.Text := 'select id as "Номер", lable as "Наименование", balance as "Остаток", cost as "Цена за еденицу" from store';
-    Open;
-   end;
-  except
-   on E: Exception do
-  begin
-      Application.MessageBox(Pchar(E.Message), 'error', MB_ICONERROR);
-      Halt;
-   end;
-  end;
-
-end;
-
 procedure TForm2.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
- // IBQuery1.Close;
-  //IBDatabase1.Connected := false;
+  IBQuery1.Close;
+  IBDatabase1.Connected := false;
   Form2.Hide;
   Form1.Show;
 end;
@@ -128,7 +100,31 @@ begin
 end;
 
 procedure TForm2.FormActivate(Sender: TObject);
+   var
+  FIniFile: TIniFile;
 begin
+  FNew := true;
+  try
+    FIniFile := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'Config.ini');
+    try
+      IBDatabase1.DatabaseName := FIniFile.ReadString('Base', 'Path', '');
+   finally
+     FIniFile.Free;
+   end;
+   IBDatabase1.Connected := true;
+   with IBQuery1 do
+   begin
+    SQL.Text := 'select id as "Номер", lable as "Наименование", balance as "Остаток", cost as "Цена за еденицу" from store';
+    Open;
+   end;
+  except
+   on E: Exception do
+  begin
+      Application.MessageBox(Pchar(E.Message), 'error', MB_ICONERROR);
+      Halt;
+   end;
+  end;
+
   with IBQuery1 do
    begin
     SQL.Text := 'select id as "Номер", lable as "Наименование", balance as "Остаток", cost as "Цена за еденицу" from store';

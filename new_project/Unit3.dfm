@@ -1,8 +1,8 @@
 object Form3: TForm3
-  Left = -1524
-  Top = 140
+  Left = -1591
+  Top = 163
   Width = 471
-  Height = 277
+  Height = 283
   Caption = #1052#1077#1085#1102
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -27,7 +27,7 @@ object Form3: TForm3
     Top = 80
     Width = 353
     Height = 33
-    Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1084#1077#1089#1103#1095#1099#1085#1081' '#1086#1090#1095#1105#1090
+    Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1084#1077#1089#1103#1095#1085#1099#1081' '#1086#1090#1095#1105#1090
     TabOrder = 1
     OnClick = Button2Click
   end

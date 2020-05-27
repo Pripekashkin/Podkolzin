@@ -30,6 +30,9 @@ type
     ComboBox8: TComboBox;
     Button6: TButton;
     Label1: TLabel;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    StringGrid1: TStringGrid;
     procedure FormActivate(Sender: TObject);
     procedure ComboBox4DblClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -37,6 +40,7 @@ type
     procedure Button6Click(Sender: TObject);
   private
     LineToId: Integer;
+    iCol, iRow: integer;
   public
     { Public declarations }
   end;
@@ -75,6 +79,8 @@ procedure TForm6.FormCreate(Sender: TObject);
  var
  FIniFile: TIniFile;
 begin
+  iCol := 0;
+  iRow := 0;
   try
     FIniFile := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'Config.ini');
     try
@@ -111,6 +117,7 @@ begin
   with IBQuery3 do //find first field id
   begin
     SQL.Text := 'select id from line_item where '''+ComboBox4.Items[ComboBox4.ItemIndex]+''' = info';
+    Edit1.Text := ComboBox4.Items[ComboBox4.ItemIndex];
     Open;
     IBQuery3.First;
     while not IBQuery3.Eof do
@@ -124,7 +131,7 @@ begin
   with IBQuery1 do
    begin
     // SQL.Text := 'select SUM(Report_sum) from report_content where (LINE_ITEM_ID ='+IntToStr(LineToId)+')';
-     SQL.Text := 'select SUM(report_content.Report_sum) as "Сумма затрат" from report_content, report where ' +
+     SQL.Text := 'select SUM(report_content.Report_sum) as "Сумма" from report_content, report where ' +
 '(LINE_ITEM_ID = '+IntToStr(LineToId)+') and ' +
 '(report_content.report_id = report.id) and ' +
 '(ryear >= '''+ComboBox6.Items[ComboBox6.ItemIndex]+''') and ' +
@@ -132,8 +139,12 @@ begin
 '(rmonth >= '''+ComboBox5.Items[ComboBox5.ItemIndex]+''') and ' +
 '(rmonth <= '''+ComboBox7.Items[ComboBox7.ItemIndex]+''')';
     Open;
+    Edit2.Text := IBQuery1.FieldByName('Сумма').AsString;
     DBGrid1.Visible := true;
    end;
+   //insert
+
+
 end;
 
 end.

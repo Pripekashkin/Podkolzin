@@ -1,7 +1,7 @@
 object Form4: TForm4
-  Left = -583
-  Top = 184
-  Width = 326
+  Left = -1116
+  Top = 96
+  Width = 327
   Height = 444
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -14,7 +14,6 @@ object Form4: TForm4
   Position = poMainFormCenter
   OnActivate = FormActivate
   OnCloseQuery = FormCloseQuery
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Label2: TLabel
@@ -46,7 +45,7 @@ object Form4: TForm4
   object ToolBar1: TToolBar
     Left = 0
     Top = 0
-    Width = 310
+    Width = 311
     Height = 1
     Caption = 'ToolBar1'
     TabOrder = 0

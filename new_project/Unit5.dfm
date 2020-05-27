@@ -1,7 +1,7 @@
 object Form5: TForm5
-  Left = -1624
-  Top = 569
-  Width = 981
+  Left = -1678
+  Top = 124
+  Width = 990
   Height = 532
   Caption = #1052#1077#1089#1103#1095#1085#1081' '#1086#1090#1095#1105#1090
   Color = clBtnFace
@@ -125,7 +125,7 @@ object Form5: TForm5
   object ToolBar1: TToolBar
     Left = 0
     Top = 0
-    Width = 965
+    Width = 974
     Height = 1
     Caption = 'ToolBar1'
     TabOrder = 0
@@ -247,6 +247,23 @@ object Form5: TForm5
     TitleFont.Height = -11
     TitleFont.Name = 'MS Sans Serif'
     TitleFont.Style = []
+  end
+  object Button1: TButton
+    Left = 552
+    Top = 64
+    Width = 201
+    Height = 25
+    Caption = #1054#1090#1086#1073#1088#1072#1079#1080#1090#1100' '#1089#1091#1084#1084#1091' '#1087#1086' '#1086#1090#1076#1077#1083#1072#1084
+    TabOrder = 12
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Left = 680
+    Top = 144
+    Width = 75
+    Height = 25
+    Caption = 'Button2'
+    TabOrder = 13
   end
   object MainMenu1: TMainMenu
     Left = 104

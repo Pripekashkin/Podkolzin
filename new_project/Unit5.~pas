@@ -307,10 +307,10 @@ begin
     MS_Word.Selection.Font.Bold := 1;
     MS_Word.Selection.ParagraphFormat.Alignment := wdAlignParagraphCenter;
 
-    wdTable.Cell(1,1).Range.Text := 'Date';
-    wdTable.Cell(1,2).Range.Text := 'Depart';
-    wdTable.Cell(1,3).Range.Text := 'Line' +#13+ 'item';
-    wdTable.Cell(1,4).Range.Text := 'Amount';
+    wdTable.Cell(1,1).Range.Text := 'Дата';
+    wdTable.Cell(1,2).Range.Text := 'Департамент';
+    wdTable.Cell(1,3).Range.Text := 'Статья' +#13+ 'Затрат';
+    wdTable.Cell(1,4).Range.Text := 'Сумма';
 
     for i := 2 to WordI do
     begin

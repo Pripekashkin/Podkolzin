@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, IniFiles, Grids, DBGrids, DB, IBCustomDataSet, IBQuery,
-  IBDatabase, StdCtrls;
+  IBDatabase, StdCtrls, comobj, wordxp;
 
 type
   TForm2 = class(TForm)
@@ -30,14 +30,23 @@ type
     Label3: TLabel;
     Label4: TLabel;
     Button1: TButton;
+    Button2: TButton;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure RadioButton1Click(Sender: TObject);
     procedure RadioButton2Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure Button3Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
   private
-    FNew: boolean;
+    FNew: Boolean;
+    LineToId: Integer;
+    DepartToId: Integer;
+    Depart: array [1..30] of string;
+    Line: array [1..30] of string;
+    Year: array [1..30] of string;
+    Sum: array [1..30] of string;
+    inc, ExcelI: integer;
   public
     { Public declarations }
   end;
@@ -153,5 +162,61 @@ begin
    end;
   end;
 end;
+
+procedure TForm2.Button2Click(Sender: TObject);
+    var
+MS_Excel, xlsAD: variant;
+i: integer;
+begin
+  inc := 1;
+  ExcelI := 1;
+  with IBQuery3 do //find first field id
+  begin
+    SQL.Text := 'select id as "Номер", lable as "Наименование", balance as "Остаток", cost as "Цена за еденицу" from store';
+    Open;
+    IBQuery3.First;
+    while not IBQuery3.Eof do
+    begin
+     Depart[ExcelI] := IBQuery3['Номер'];  // here id of current line
+     Line[ExcelI] := IBQuery3['Наименование'];
+     Year[ExcelI] := IBQuery3['Остаток'];
+     Sum[ExcelI] := IBQuery3['Цена за еденицу'];
+     ExcelI := ExcelI + 1;
+     IBQuery3.Next;
+    end;
+   IBQuery3.Close;
+  end;
+
+  MS_Excel := CreateOleObject('Excel.Application');
+  MS_Excel.Visible := true;
+  MS_Excel.Workbooks.Add;
+  MS_Excel.Workbooks[1].WorkSheets[1].Name := 'line_item';
+  xlsAD := MS_Excel.Workbooks[1].WorkSheets[1].Columns;
+  //size
+  xlsAD.Columns[1].ColumnWidth:=10;
+  xlsAD.Columns[2].ColumnWidth:=20;
+  xlsAD.Columns[3].ColumnWidth:=10;
+  xlsAD.Columns[4].ColumnWidth:=5;
+  //bold
+  xlsAD := MS_Excel.Workbooks[1].WorkSheets['line_item'].Rows;
+  xlsAD.Rows[1].Font.Bold := true;
+  //name
+  xlsAD := MS_Excel.Workbooks[1].WorkSheets[1];
+  xlsAD.Cells[1,1] := 'Номер';
+  xlsAD.Cells[1,2] := 'Наименование';
+  xlsAD.Cells[1,3] := 'Остаток';
+  xlsAD.Cells[1,4] := 'Цена ';
+
+
+  for i := 2 to ExcelI do
+  begin
+  xlsAD.Cells[i,1] := Depart[inc];
+  xlsAD.Cells[i,2] := Line[inc];
+  xlsAD.Cells[i,3] := Year[inc];
+  xlsAD.Cells[i,4] := Sum[inc];
+  inc := inc + 1;
+  end;
+end;
+//end;
 
 end.
