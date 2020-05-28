@@ -1,9 +1,9 @@
-object Form8: TForm8
-  Left = -1459
-  Top = 400
-  Width = 1224
-  Height = 345
-  Caption = 'Form8'
+object Form9: TForm9
+  Left = -1566
+  Top = 310
+  Width = 1392
+  Height = 720
+  Caption = 'Form9'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -27,6 +27,20 @@ object Form8: TForm8
     Font.Name = 'MS Sans Serif'
     Font.Style = []
     ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 800
+    Top = 352
+    Width = 32
+    Height = 13
+    Caption = 'Label2'
+  end
+  object Label3: TLabel
+    Left = 816
+    Top = 376
+    Width = 32
+    Height = 13
+    Caption = 'Label3'
   end
   object DBGrid1: TDBGrid
     Left = 17
@@ -62,7 +76,6 @@ object Form8: TForm8
     Height = 25
     Caption = #1069#1082#1089#1087#1086#1088#1090' '#1076#1077#1090#1072#1083#1080#1079#1080#1088#1086#1074#1072#1085#1085#1086#1075#1086' '#1086#1090#1095#1105#1090#1072
     TabOrder = 2
-    OnClick = Button1Click
   end
   object IBDatabase1: TIBDatabase
     Params.Strings = (

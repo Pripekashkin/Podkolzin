@@ -257,14 +257,6 @@ object Form5: TForm5
     TabOrder = 12
     OnClick = Button1Click
   end
-  object Button2: TButton
-    Left = 680
-    Top = 144
-    Width = 75
-    Height = 25
-    Caption = 'Button2'
-    TabOrder = 13
-  end
   object MainMenu1: TMainMenu
     Left = 104
     Top = 528

@@ -42,6 +42,8 @@ type
     IBTransaction2: TIBTransaction;
     IBQuery3: TIBQuery;
     IBTransaction3: TIBTransaction;
+    Button1: TButton;
+    Button2: TButton;
     procedure FormCreate(Sender: TObject);
     procedure Button7Click(Sender: TObject);
     procedure ComboBox1DblClick(Sender: TObject);
@@ -52,6 +54,7 @@ type
     procedure N1Click(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormActivate(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     FNew: boolean;
     CheckFirstTable: String;
@@ -77,7 +80,7 @@ var
 
 implementation
 
-uses Unit3;
+uses Unit3, Unit8;
 
 {$R *.dfm}
 
@@ -344,6 +347,11 @@ begin
       '(report.depart_id = depart.id) order by report.id';
     Open;
    end;
+end;
+
+procedure TForm5.Button1Click(Sender: TObject);
+begin
+  Form8.Show;
 end;
 
 end.

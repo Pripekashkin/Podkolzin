@@ -1,0 +1,73 @@
+unit Unit9;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Grids, DBGrids, DB, IBDatabase, IBCustomDataSet,
+  IBQuery;
+
+type
+  TForm9 = class(TForm)
+    IBDatabase1: TIBDatabase;
+    IBQuery1: TIBQuery;
+    IBTransaction1: TIBTransaction;
+    DataSource1: TDataSource;
+    IBQuery2: TIBQuery;
+    IBTransaction2: TIBTransaction;
+    IBQuery3: TIBQuery;
+    IBTransaction3: TIBTransaction;
+    DataSource2: TDataSource;
+    DBGrid1: TDBGrid;
+    DBGrid2: TDBGrid;
+    Label1: TLabel;
+    Button1: TButton;
+    procedure FormActivate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form9: TForm9;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm9.FormActivate(Sender: TObject);
+var
+  FIniFile: TIniFile;
+begin
+  try
+    FIniFile := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'Config.ini');
+    try
+      IBDatabase1.DatabaseName := FIniFile.ReadString('Base', 'Path', '');
+   finally
+     FIniFile.Free;
+   end;
+   IBDatabase1.Connected := true;
+   with IBQuery1 do
+   begin
+    SQL.Text := 'SELECT REPORT.DEPART_ID as "Номер", SUM(REPORT_CONTENT.REPORT_SUM) as "Сумма", '+
+'MAX(DEPART.NAME) as "Имя" '+
+ 'FROM REPORT REPORT_CONTENT '+
+'JOIN REPORT_CONTENT RC ON REPORT.ID = REPORT_CONTENT.REPORT_ID '+
+'JOIN DEPART ON REPORT.DEPART_ID = DEPART.ID '+
+'GROUP BY REPORT.DEPART_ID';
+   Open;
+   end;
+
+
+      
+  except
+   on E: Exception do
+  begin
+      Application.MessageBox(Pchar(E.Message), 'error', MB_ICONERROR);
+      Halt;
+   end;
+  end;
+end;
+
+end.

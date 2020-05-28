@@ -1,6 +1,6 @@
 object Form7: TForm7
-  Left = -636
-  Top = 532
+  Left = -1090
+  Top = 223
   Width = 691
   Height = 474
   Caption = #1043#1086#1076#1086#1074#1086#1081' '#1087#1083#1072#1085
@@ -193,6 +193,15 @@ object Form7: TForm7
     TitleFont.Height = -11
     TitleFont.Name = 'MS Sans Serif'
     TitleFont.Style = []
+  end
+  object Button1: TButton
+    Left = 504
+    Top = 72
+    Width = 75
+    Height = 25
+    Caption = #1058#1072#1073#1083#1080#1094#1099
+    TabOrder = 10
+    OnClick = Button1Click
   end
   object MainMenu1: TMainMenu
     Left = 104

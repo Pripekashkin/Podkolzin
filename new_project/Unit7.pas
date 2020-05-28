@@ -38,6 +38,7 @@ type
     IBTransaction2: TIBTransaction;
     IBQuery3: TIBQuery;
     IBTransaction3: TIBTransaction;
+    Button1: TButton;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure RadioButton1Click(Sender: TObject);
@@ -48,6 +49,7 @@ type
     procedure Button4Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure N1Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     FNew: Boolean;
     LineToId: Integer;
@@ -66,7 +68,7 @@ var
 
 implementation
 
-uses Unit3;
+uses Unit3, Unit9;
 
 {$R *.dfm}
 
@@ -301,5 +303,10 @@ begin
   end;
 end;
 //end;
+
+procedure TForm7.Button1Click(Sender: TObject);
+begin
+Form9.Show;
+end;
 
 end.

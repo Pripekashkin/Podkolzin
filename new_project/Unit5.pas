@@ -43,7 +43,6 @@ type
     IBQuery3: TIBQuery;
     IBTransaction3: TIBTransaction;
     Button1: TButton;
-    Button2: TButton;
     procedure FormCreate(Sender: TObject);
     procedure Button7Click(Sender: TObject);
     procedure ComboBox1DblClick(Sender: TObject);
