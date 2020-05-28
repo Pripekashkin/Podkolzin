@@ -1,6 +1,6 @@
 object Form9: TForm9
-  Left = -1491
-  Top = 359
+  Left = -1566
+  Top = 310
   Width = 1392
   Height = 720
   Caption = 'Form9'
@@ -12,6 +12,7 @@ object Form9: TForm9
   Font.Style = []
   OldCreateOrder = False
   OnActivate = FormActivate
+  OnCloseQuery = FormCloseQuery
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -27,6 +28,20 @@ object Form9: TForm9
     Font.Style = []
     ParentFont = False
   end
+  object Label2: TLabel
+    Left = 800
+    Top = 352
+    Width = 32
+    Height = 13
+    Caption = 'Label2'
+  end
+  object Label3: TLabel
+    Left = 816
+    Top = 376
+    Width = 32
+    Height = 13
+    Caption = 'Label3'
+  end
   object DBGrid1: TDBGrid
     Left = 17
     Top = 80
@@ -39,6 +54,7 @@ object Form9: TForm9
     TitleFont.Height = -11
     TitleFont.Name = 'MS Sans Serif'
     TitleFont.Style = []
+    OnCellClick = DBGrid1CellClick
   end
   object DBGrid2: TDBGrid
     Left = 560

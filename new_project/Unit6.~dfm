@@ -1,9 +1,10 @@
 object Form6: TForm6
   Left = -718
   Top = 200
-  Width = 675
-  Height = 740
+  AutoScroll = False
   Caption = #1057#1091#1084#1084#1072
+  ClientHeight = 386
+  ClientWidth = 323
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -215,11 +216,12 @@ object Form6: TForm6
   end
   object StringGrid1: TStringGrid
     Left = 40
-    Top = 208
-    Width = 417
-    Height = 185
+    Top = 184
+    Width = 249
+    Height = 177
     ColCount = 2
     FixedCols = 0
+    RowCount = 10
     TabOrder = 9
     ColWidths = (
       155

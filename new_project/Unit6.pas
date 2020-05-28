@@ -41,6 +41,8 @@ type
   private
     LineToId: Integer;
     iCol, iRow: integer;
+    check : array[1..10] of boolean;
+
   public
     { Public declarations }
   end;
@@ -115,6 +117,7 @@ begin
 end;
 
 procedure TForm6.Button6Click(Sender: TObject);
+label m;
 begin
   with IBQuery3 do //find first field id
   begin
@@ -129,7 +132,7 @@ begin
     end;
    IBQuery3.Close;
   end;
-
+   if check[LineToId] = true then goto m;
   with IBQuery1 do
    begin
     // SQL.Text := 'select SUM(Report_sum) from report_content where (LINE_ITEM_ID ='+IntToStr(LineToId)+')';
@@ -152,9 +155,10 @@ begin
     StringGrid1.Cells[1,iRow] := 'Нет';
    iCol := iCol + 1;
    iRow := iRow + 1;
+   check[LineToId] := True;
 
 
-
+m:
 
 end;
 

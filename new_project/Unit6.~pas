@@ -79,8 +79,10 @@ procedure TForm6.FormCreate(Sender: TObject);
  var
  FIniFile: TIniFile;
 begin
-  iCol := 0;
-  iRow := 0;
+  iCol := 1;
+  iRow := 1;
+  StringGrid1.Cells[0,0] := 'Статья';
+  StringGrid1.Cells[1,0] := 'Сумма';
   try
     FIniFile := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'Config.ini');
     try
@@ -143,6 +145,15 @@ begin
     DBGrid1.Visible := true;
    end;
    //insert
+   StringGrid1.Cells[0,iCol] := Edit1.Text;
+   if (Edit2.Text <> '') then
+    StringGrid1.Cells[1,iRow] := Edit2.Text
+   else
+    StringGrid1.Cells[1,iRow] := 'Нет';
+   iCol := iCol + 1;
+   iRow := iRow + 1;
+
+
 
 
 end;

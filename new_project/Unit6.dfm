@@ -1,6 +1,6 @@
 object Form6: TForm6
-  Left = -718
-  Top = 200
+  Left = -1077
+  Top = 234
   AutoScroll = False
   Caption = #1057#1091#1084#1084#1072
   ClientHeight = 386
